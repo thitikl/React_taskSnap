@@ -1,13 +1,20 @@
 import { BrowserRouter } from "react-router-dom";
-import Navbar from "./Navbar";
+import { useState } from "react";
+
+import data from './data/MOCK_DATA.json';
 import "./styles.css";
 
+import Navbar from "./Navbar";
+
+
+
 export default function App() {
+  const [tasks, setTasks] = useState(data);
   return (
     <BrowserRouter>
-    <div className="App">
-      <Navbar />
-    </div>
+      <div className="App">
+        <Navbar data={tasks} modifyData={setTasks} />
+      </div>
     </BrowserRouter>
   );
 }

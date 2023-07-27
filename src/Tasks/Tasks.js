@@ -1,3 +1,16 @@
-export default function Tasks(){
-    return<div>Tasks</div>
+export default function Tasks(props){
+    const renderTasks = () => {
+        return props.data.slice(0,5).map((task) => {
+            return <div>
+                <h3>{task.title}</h3>
+                <p>{task.assigned_to}</p>
+                <p>{task.due}</p>
+            </div>
+        })
+    };
+            
+    return<div>
+        <h1>Tasks</h1>
+        {renderTasks()}
+    </div>
 }
