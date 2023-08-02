@@ -1,6 +1,6 @@
 import { Routes, Route, Link } from "react-router-dom";
 import Board from "./Board/Board";
-import Calendar from "./Calendar/Calendar";
+import TaskSnapCalendar from "./Calendar/Calendar";
 import Tasks from "./Tasks/Tasks";
 
 export default function Navbar(props) {
@@ -41,7 +41,7 @@ export default function Navbar(props) {
             <Routes>
                 <Route path="/" element={<Tasks data={props.data} modifyData={props.modifyData}/>} />
                 <Route path="/board" element={<Board data={props.data} modifyData={props.modifyData}/>} />
-                <Route path="/calendar" element={<Calendar data={props.data} modifyData={props.modifyData}/>} />
+                <Route path="/calendar" element={<TaskSnapCalendar data={props.data} modifyData={props.modifyData}/>} />
             </Routes>
         </>
 

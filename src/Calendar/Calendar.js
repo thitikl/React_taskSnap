@@ -1,16 +1,56 @@
-export default function Calendar(props){
-    const renderTasks = () => {
-        return props.data.slice(10,15).map((task) => {
-            return <div>
-                <h3>{task.title}</h3>
-                <p>{task.assigned_to}</p>
-                <p>{task.due}</p>
-            </div>
+import { useState, useEffect } from 'react';
+import { Calendar, momentLocalizer } from 'react-big-calendar';
+import moment from 'moment';
+
+import 'react-big-calendar/lib/css/react-big-calendar.css';
+import './calendar.css'
+
+const localizer = momentLocalizer(moment)
+
+export default function TaskSnapCalendar(props) {
+    const [holidays, setHoliday] = useState([]);
+    const HOLIDAY_API_URL = 'https://canada-holidays.ca/api/v1/holidays';
+    useEffect(() => {
+        fetch(HOLIDAY_API_URL)
+            .then(res => res.json())
+            .then(data => setHoliday(data.holidays))
+    }, [])
+    const holidayEvents = [];
+    holidays.forEach(holiday => {
+        holiday.federal ? holidayEvents.push({
+            title: holiday.nameEn,
+            start: moment(holiday.date).toDate(),
+            end: moment(holiday.date).toDate(),
+            allDay: true,
+            type: 'holiday',
+            color: '#D71313'
+        }) : null;
+    });
+
+    const tasks = [];
+    props.data.forEach(task => {
+        tasks.push({
+            title: task.title,
+            start: moment(task.start).toDate(),
+            end: moment(task.due).toDate(),
+            allDay: task.due.includes('T') ? false : true,
         })
-    };
-            
-    return<div>
-        <h1>Calendar</h1>
-        {renderTasks()}
+    });
+
+    const events = [...holidayEvents, ...tasks];
+    return <div >
+        <Calendar
+            className='main-calendar'
+            localizer={localizer}
+            events={events}
+            startAccessor="start"
+            // endAccessor="end"
+            endAccessor={event => event.allDay ? moment(event.end).add(1, 'days').format('YYYY-MM-DD') : event.end}
+            showMultiDayTimes={true}
+            eventPropGetter={event => {
+                const backgroundColor = event.color;
+                return { style: { backgroundColor } };
+            }}
+        />
     </div>
 }
