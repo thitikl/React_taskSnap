@@ -38,13 +38,12 @@ export default function TaskSnapCalendar(props) {
     });
 
     const events = [...holidayEvents, ...tasks];
-    return <div >
+    return <div className='content'>
         <Calendar
             className='main-calendar'
             localizer={localizer}
             events={events}
             startAccessor="start"
-            // endAccessor="end"
             endAccessor={event => event.allDay ? moment(event.end).add(1, 'days').format('YYYY-MM-DD') : event.end}
             showMultiDayTimes={true}
             eventPropGetter={event => {
