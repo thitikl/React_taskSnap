@@ -9,7 +9,7 @@ export default function Calendar(props){
         })
     };
             
-    return<div>
+    return<div className="content">
         <h1>Calendar</h1>
         {renderTasks()}
     </div>
