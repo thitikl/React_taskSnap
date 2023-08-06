@@ -1,16 +1,43 @@
-export default function Tasks(props){
-    const renderTasks = () => {
-        return props.data.slice(0,5).map((task) => {
-            return <div>
-                <h3>{task.title}</h3>
-                <p>{task.assigned_to}</p>
-                <p>{task.due}</p>
-            </div>
-        })
-    };
-            
-    return<div>
-        <h1>Tasks</h1>
-        {renderTasks()}
+import React from 'react';
+import Completed from './completed.png'
+import Upcoming from './upcoming.png'
+import Today from './today.png'
+
+export default function Tasks(props) {
+  const { data: tasksData } = props;
+
+  const renderTasks = (tasks,src) => {
+    return tasks.length > 0 ? (
+      tasks.map((task) => (
+        <div style={{display:'flex', cursor:'pointer'}} key={task.id} onClick={() => alert("Hi`")}>
+        <img src={src} />
+        <div>
+          <h3>{task.title}</h3>
+          <p>{task.due}</p>
+          </div>
+        </div>
+
+      ))
+    ) : (
+      <p>No tasks for this status</p>
+    );
+  };
+  const upcomingTasks = tasksData.filter((task) => task.status === 'plan');
+  const todayTasks = tasksData.filter((task) => task.status === 'ongoing');
+  const finishedTasks = tasksData.filter((task) => task.status === 'finished');
+
+  return (
+    <div>
+      <h1>TASKS</h1>
+      <br/>
+      <h2>UPCOMING</h2>
+      {renderTasks(upcomingTasks, Upcoming)}
+
+      <h2>TODAY</h2>
+      {renderTasks(todayTasks, Today)}
+
+      <h2>FINISHED</h2>
+      {renderTasks(finishedTasks, Completed)}
     </div>
+  );
 }
