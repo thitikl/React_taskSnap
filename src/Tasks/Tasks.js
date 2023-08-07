@@ -2,6 +2,7 @@ import React from 'react';
 import Completed from './completed.png'
 import Upcoming from './upcoming.png'
 import Today from './today.png'
+import './style.css'
 
 export default function Tasks(props) {
   const { data: tasksData } = props;
@@ -9,7 +10,7 @@ export default function Tasks(props) {
   const renderTasks = (tasks,src) => {
     return tasks.length > 0 ? (
       tasks.map((task) => (
-        <div style={{display:'flex', cursor:'pointer'}} key={task.id} onClick={() => alert("Hi`")}>
+        <div className="tasks" style={{display:'flex', cursor:'pointer'}} key={task.id} onClick={() => alert("Task Edit Pop Will Be here")}>
         <img src={src} />
         <div>
           <h3>{task.title}</h3>
@@ -27,7 +28,7 @@ export default function Tasks(props) {
   const finishedTasks = tasksData.filter((task) => task.status === 'finished');
 
   return (
-    <div>
+    <div className='task-main'>
       <h1>TASKS</h1>
       <br/>
       <h2>UPCOMING</h2>
