@@ -17,14 +17,16 @@ export default function TaskSnapCalendar(props) {
     }, [])
     const holidayEvents = [];
     holidays.forEach(holiday => {
-        holiday.federal ? holidayEvents.push({
-            title: holiday.nameEn,
-            start: moment(holiday.date).toDate(),
-            end: moment(holiday.date).toDate(),
-            allDay: true,
-            type: 'holiday',
-            color: '#D71313'
-        }) : null;
+        if (holiday.federal) {
+            holidayEvents.push({
+                title: holiday.nameEn,
+                start: moment(holiday.date).toDate(),
+                end: moment(holiday.date).toDate(),
+                allDay: true,
+                type: 'holiday',
+                color: '#D71313'
+            });
+        }
     });
 
     const tasks = [];
