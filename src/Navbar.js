@@ -1,19 +1,18 @@
 import { Routes, Route, Link } from "react-router-dom";
 import Board from "./Board/Board";
-import Calendar from "./Calendar/Calendar";
+import TaskSnapCalendar from "./Calendar/Calendar";
 import Tasks from "./Tasks/Tasks";
+import logo from './img/logo.png'
 
 export default function Navbar(props) {
     return (
         <>
             <div className="nav-side">
-
-                <nav className="navbar bg-dark navbar-dark flex-column">
+                <nav className="navbar flex-column">
                     <Link className="navbar-brand" to="/" >
                         <img
-                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCfgTS3DanyDhzb8V6bnpZivIsRxKWzf-Q1Q&usqp=CAU" // Replace with the URL or path to your logo
+                            src={logo} // Replace with the URL or path to your logo
                             width="200"
-                            height="100"
                             className="d-inline-block align-top"
                             alt="Logo"
                         />
@@ -41,7 +40,7 @@ export default function Navbar(props) {
             <Routes>
                 <Route path="/" element={<Tasks data={props.data} modifyData={props.modifyData}/>} />
                 <Route path="/board" element={<Board data={props.data} modifyData={props.modifyData}/>} />
-                <Route path="/calendar" element={<Calendar data={props.data} modifyData={props.modifyData}/>} />
+                <Route path="/calendar" element={<TaskSnapCalendar data={props.data} modifyData={props.modifyData}/>} />
             </Routes>
         </>
 

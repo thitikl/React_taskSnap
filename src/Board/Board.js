@@ -9,7 +9,7 @@ export default function Board(props){
         })
     };
             
-    return<div>
+    return<div className="content">
         <h1>Board</h1>
         {renderTasks()}
     </div>
