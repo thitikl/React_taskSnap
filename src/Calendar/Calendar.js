@@ -17,7 +17,7 @@ export default function TaskSnapCalendar(props) {
     }, [])
     const holidayEvents = [];
     holidays.forEach(holiday => {
-        if(holiday.federal) {
+        if (holiday.federal) {
             holidayEvents.push({
                 title: holiday.nameEn,
                 start: moment(holiday.date).toDate(),
