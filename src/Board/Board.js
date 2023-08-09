@@ -53,7 +53,7 @@ export default function Board(props) {
                   width="16"
                   height="16"
                   fill="currentColor"
-                  class="bi bi-tags-fill"
+                  className="bi bi-tags-fill"
                   viewBox="0 0 16 16"
                 >
                   <path d="M2 2a1 1 0 0 1 1-1h4.586a1 1 0 0 1 .707.293l7 7a1 1 0 0 1 0 1.414l-4.586 4.586a1 1 0 0 1-1.414 0l-7-7A1 1 0 0 1 2 6.586V2zm3.5 4a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z" />
@@ -68,7 +68,7 @@ export default function Board(props) {
                   width="16"
                   height="16"
                   fill="currentColor"
-                  class="bi bi-calendar-event-fill"
+                  className="bi bi-calendar-event-fill"
                   viewBox="0 0 16 16"
                 >
                   <path d="M4 .5a.5.5 0 0 0-1 0V1H2a2 2 0 0 0-2 2v1h16V3a2 2 0 0 0-2-2h-1V.5a.5.5 0 0 0-1 0V1H4V.5zM16 14V5H0v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2zm-3.5-7h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5z" />
@@ -83,15 +83,15 @@ export default function Board(props) {
                   width="16"
                   height="16"
                   fill="currentColor"
-                  class="bi bi-chevron-double-right"
+                  className="bi bi-chevron-double-right"
                   viewBox="0 0 16 16"
                 >
                   <path
-                    fill-rule="evenodd"
+                    fillRule="evenodd"
                     d="M3.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L9.293 8 3.646 2.354a.5.5 0 0 1 0-.708z"
                   />
                   <path
-                    fill-rule="evenodd"
+                    fillRule="evenodd"
                     d="M7.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L13.293 8 7.646 2.354a.5.5 0 0 1 0-.708z"
                   />
                 </svg>{" "}
@@ -127,7 +127,6 @@ export default function Board(props) {
             }}
           >
             <div
-              className="card"
               style={{
                 height: "60px",
                 marginTop: "10px",
@@ -137,26 +136,31 @@ export default function Board(props) {
               }}
             >
               <div
-                className="card-body text-center"
+                className="text-center"
                 style={{
-                  fontSize: "20px",
-                  fontWeight: "bold",
-                  fontFamily: "sans-serif",
                   backgroundColor: "rgb(211, 229, 239)",
                   color: "rgb(24, 51, 71)",
+                  fontSize: "20px",
+                  fontFamily: "sans-serif",
+                  padding: "10px",
+                  borderRadius: "10%",
                 }}
               >
-                Today's Tasks
+                Ongoing Plans
               </div>
-              <div className="mt-5">
+              <div className="mt-4">
                 {renderTasks(todayTasks)}
                 <button
-                  className="btn btn-primary rounded-circle"
+                  className="btn rounded-circle"
                   style={{
                     fontSize: "30px",
                     display: "block",
                     marginLeft: "auto",
                     marginRight: "auto",
+                    backgroundColor: "black",
+                    color: "white",
+                    border: "none",
+                    marginBottom: "10px",
                   }}
                 >
                   <FaPlus />
@@ -167,14 +171,13 @@ export default function Board(props) {
           <div
             className="col-md-4 bg-secondary d-flex"
             style={{
-                overflowY: "auto",
-                maxHeight: "100%",
-                msOverflowStyle: "none",
-                scrollbarWidth: "none",
-              }}
+              overflowY: "auto",
+              maxHeight: "100%",
+              msOverflowStyle: "none",
+              scrollbarWidth: "none",
+            }}
           >
             <div
-              className="card"
               style={{
                 height: "60px",
                 marginTop: "10px",
@@ -184,26 +187,31 @@ export default function Board(props) {
               }}
             >
               <div
-                className="card-body text-center"
+                className="text-center"
                 style={{
                   fontSize: "20px",
-                  fontWeight: "bold",
                   fontFamily: "sans-serif",
+                  padding: "10px",
+                  borderRadius: "10%",
                   color: "rgb(65, 36, 84)",
                   backgroundColor: "rgb(232, 222, 238)",
                 }}
               >
-                Future Tasks
+                Upcoming Plans
               </div>
-              <div className="mt-5">
+              <div className="mt-4">
                 {renderTasks(upcomingTasks)}
                 <button
-                  className="btn btn-primary rounded-circle"
+                  className="btn rounded-circle"
                   style={{
                     fontSize: "30px",
                     display: "block",
                     marginLeft: "auto",
                     marginRight: "auto",
+                    backgroundColor: "black",
+                    color: "white",
+                    border: "none",
+                    marginBottom: "10px",
                   }}
                 >
                   <FaPlus />
@@ -221,7 +229,6 @@ export default function Board(props) {
             }}
           >
             <div
-              className="card"
               style={{
                 height: "60px",
                 marginTop: "10px",
@@ -231,18 +238,19 @@ export default function Board(props) {
               }}
             >
               <div
-                className="card-body text-center"
+                className="text-center"
                 style={{
                   fontSize: "20px",
-                  fontWeight: "bold",
                   fontFamily: "sans-serif",
                   color: "rgb(28, 56, 41)",
                   backgroundColor: "rgb(219, 237, 219)",
+                  padding: "10px",
+                  borderRadius: "10%",
                 }}
               >
-                Finished Tasks
+                Finished
               </div>
-              <div className="mt-5">{renderTasks(finishedTasks)}</div>
+              <div className="mt-4">{renderTasks(finishedTasks)}</div>
             </div>
           </div>
         </div>
