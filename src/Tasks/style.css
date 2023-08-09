@@ -1,7 +1,7 @@
-.task-main{
-    margin-left: 250px;
+.task-main {
+  margin-left: 250px;
 }
 
-.tasks:hover{
-    background-color: rgba(0, 0,0,0.1);
+.tasks:hover {
+  background-color: rgba(0, 0, 0, 0.1);
 }

@@ -1,20 +1,202 @@
-[{"title":"Performance optimization/App","status":"ongoing","assigned_to":"Greg O'Cridigan", "start": "2023-08-07T10:00:00","due":"2023-08-08T12:00:00","label":"App","description":"Performance optimization of App"},
-{"title":"Performance optimization/Website","status":"plan","assigned_to":"Adi London","start": "2023-08-26T08:00:00","due":"2023-08-27T17:00:00","label":"Website","description":""},
-{"title":"UI/UX design/App","status":"plan","assigned_to":"Seumas Staddart","start": "2023-07-24","due":"2023-07-25","label":"App","description":""},
-{"title":"Sprint planning/Phase2","status":"ongoing","assigned_to":"Neall Busch","start": "2023-08-04T08:00:00","due":"2023-08-07T17:00:00","label":"Planning","description":""},
-{"title":"Retrospective","status":"finished","assigned_to":"Therese Jonin","start": "2023-04-10T14:00:00","due":"2023-04-10T15:00:00","label":"Planning","description":""},
-{"title":"Refactoring/App","status":"ongoing","assigned_to":"Isador Willatt","start": "2023-09-14","due":"2023-09-16","label":"App","description":"Refactoring of the App"},
-{"title":"Database design","status":"plan","assigned_to":"Bette-ann Mougel","start": "2023-08-22T09:00:00","due":"2023-08-24T12:00:00","label":"Database","description":""},
-{"title":"Pair programming","status":"ongoing","assigned_to":"Nissy Hush","start": "2023-08-14","due":"2023-08-16","label":"Planning","description":""},
-{"title":"Bug fixing/App","status":"ongoing","assigned_to":"Gayel Saunier","start": "2022-12-01","due":"2022-12-10","label":"App","description":""},
-{"title":"Performance optimization/App phase 2","status":"finished","assigned_to":"Donal Pledge","start": "2023-07-01","due":"2023-07-06","label":"App","description":"Performance optimization of the App phase 2"},
-{"title":"UI/UX design/App phase 2","status":"plan","assigned_to":"Clement Hawkswell","start": "2023-07-04","due":"2023-07-05","label":"App","description":""},
-{"title":"Refactoring/App phase 3","status":"plan","assigned_to":"Justinian Estcot","start": "2022-09-30","due":"2022-10-16","label":"App","description":""},
-{"title":"Database design/Phase 2","status":"plan","assigned_to":"Fair Suermeiers","start": "2022-10-22","due":"2022-10-28","label":"Database","description":""},
-{"title":"Code review/App","status":"ongoing","assigned_to":"Ruth Hamer","start": "2023-08-16T10:00:00","due":"2023-08-17T15:00:00","label":"App","description":""},
-{"title":"Refactoring/Website phase 3","status":"ongoing","assigned_to":"Brnaba Beidebeke","start": "2023-02-05","due":"2023-02-07","label":"Website","description":"Refactoring of the Website phase 3"},
-{"title":"Refactoring/Website phase 2","status":"ongoing","assigned_to":"Philly Jeduch","start": "2022-08-11","due":"2022-08-18","label":"Website","description":""},
-{"title":"Code review/Website","status":"plan","assigned_to":"Mortimer Litherborough","start": "2022-11-17","due":"2022-11-17","label":"Website","description":""},
-{"title":"Sprint planning/Phase3","status":"finished","assigned_to":"Sophia Moland","start": "2023-08-18T10:00:00","due":"2023-08-18T13:00:00","label":"Planning","description":""},
-{"title":"Integration testing","status":"finished","assigned_to":"Clo Melbury","start": "2023-05-04","due":"2023-05-09","label":"Test","description":"Integration testing"},
-{"title":"Performance optimization/Infastucture","status":"plan","assigned_to":"Korrie Thornebarrow","start": "2023-06-30","due":"2023-06-30","label":"Infastructure","description":""}]
+[
+  {
+    "id": "0",
+    "title": "Performance optimization",
+    "status": "ongoing",
+    "assigned_to": "Greg O'Cridigan",
+    "start": "2023-08-07T10:00:00",
+    "due": "2023-08-08T12:00:00",
+    "label": "App",
+    "description": "Performance optimization of App"
+  },
+  {
+    "id": "1",
+    "title": "Performance optimization",
+    "status": "plan",
+    "assigned_to": "Adi London",
+    "start": "2023-08-26T08:00:00",
+    "due": "2023-08-27T17:00:00",
+    "label": "Website",
+    "description": ""
+  },
+  {
+    "id": "2",
+    "title": "UI/UX design",
+    "status": "plan",
+    "assigned_to": "Seumas Staddart",
+    "start": "2023-07-24",
+    "due": "2023-07-25",
+    "label": "App",
+    "description": ""
+  },
+  {
+    "id": "3",
+    "title": "Sprint planning Phase2",
+    "status": "ongoing",
+    "assigned_to": "Neall Busch",
+    "start": "2023-08-04T08:00:00",
+    "due": "2023-08-07T17:00:00",
+    "label": "Planning",
+    "description": ""
+  },
+  {
+    "id": "4",
+    "title": "Retrospective",
+    "status": "finished",
+    "assigned_to": "Therese Jonin",
+    "start": "2023-04-10T14:00:00",
+    "due": "2023-04-10T15:00:00",
+    "label": "Planning",
+    "description": ""
+  },
+  {
+    "id": "5",
+    "title": "Refactoring",
+    "status": "ongoing",
+    "assigned_to": "Isador Willatt",
+    "start": "2023-09-14",
+    "due": "2023-09-16",
+    "label": "App",
+    "description": "Refactoring of the App"
+  },
+  {
+    "id": "6",
+    "title": "Database design",
+    "status": "plan",
+    "assigned_to": "Bette-ann Mougel",
+    "start": "2023-08-22T09:00:00",
+    "due": "2023-08-24T12:00:00",
+    "label": "Database",
+    "description": ""
+  },
+  {
+    "id": "7",
+    "title": "Pair programming",
+    "status": "ongoing",
+    "assigned_to": "Nissy Hush",
+    "start": "2023-08-14",
+    "due": "2023-08-16",
+    "label": "Planning",
+    "description": ""
+  },
+  {
+    "id": "8",
+    "title": "Bug fixing",
+    "status": "ongoing",
+    "assigned_to": "Gayel Saunier",
+    "start": "2022-12-01",
+    "due": "2022-12-10",
+    "label": "App",
+    "description": ""
+  },
+  {
+    "id": "9",
+    "title": "Performance optimization Phase 2",
+    "status": "finished",
+    "assigned_to": "Donal Pledge",
+    "start": "2023-07-01",
+    "due": "2023-07-06",
+    "label": "App",
+    "description": "Performance optimization of the App Phase 2"
+  },
+  {
+    "id": "10",
+    "title": "UI/UX design Phase 2",
+    "status": "plan",
+    "assigned_to": "Clement Hawkswell",
+    "start": "2023-07-04",
+    "due": "2023-07-05",
+    "label": "App",
+    "description": ""
+  },
+  {
+    "id": "11",
+    "title": "Refactoring Phase 3",
+    "status": "plan",
+    "assigned_to": "Justinian Estcot",
+    "start": "2022-09-30",
+    "due": "2022-10-16",
+    "label": "App",
+    "description": ""
+  },
+  {
+    "id": "12",
+    "title": "Database design Phase 2",
+    "status": "plan",
+    "assigned_to": "Fair Suermeiers",
+    "start": "2022-10-22",
+    "due": "2022-10-28",
+    "label": "Database",
+    "description": ""
+  },
+  {
+    "id": "13",
+    "title": "Code review",
+    "status": "ongoing",
+    "assigned_to": "Ruth Hamer",
+    "start": "2023-08-16T10:00:00",
+    "due": "2023-08-17T15:00:00",
+    "label": "App",
+    "description": ""
+  },
+  {
+    "id": "14",
+    "title": "Refactoring Phase 3",
+    "status": "ongoing",
+    "assigned_to": "Brnaba Beidebeke",
+    "start": "2023-02-05",
+    "due": "2023-02-07",
+    "label": "Website",
+    "description": "Refactoring of the Website Phase 3"
+  },
+  {
+    "id": "15",
+    "title": "Refactoring Phase 2",
+    "status": "ongoing",
+    "assigned_to": "Philly Jeduch",
+    "start": "2022-08-11",
+    "due": "2022-08-18",
+    "label": "Website",
+    "description": ""
+  },
+  {
+    "id": "16",
+    "title": "Code review",
+    "status": "plan",
+    "assigned_to": "Mortimer Litherborough",
+    "start": "2022-11-17",
+    "due": "2022-11-17",
+    "label": "Website",
+    "description": ""
+  },
+  {
+    "id": "17",
+    "title": "Sprint planning Phase 3",
+    "status": "finished",
+    "assigned_to": "Sophia Moland",
+    "start": "2023-08-18T10:00:00",
+    "due": "2023-08-18T13:00:00",
+    "label": "Planning",
+    "description": ""
+  },
+  {
+    "id": "18",
+    "title": "Integration testing",
+    "status": "finished",
+    "assigned_to": "Clo Melbury",
+    "start": "2023-05-04",
+    "due": "2023-05-09",
+    "label": "Test",
+    "description": "Integration testing"
+  },
+  {
+    "id": "19",
+    "title": "Performance optimization",
+    "status": "plan",
+    "assigned_to": "Korrie Thornebarrow",
+    "start": "2023-06-30",
+    "due": "2023-06-30",
+    "label": "Infastructure",
+    "description": ""
+  }
+]
