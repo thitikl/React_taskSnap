@@ -171,7 +171,7 @@ export default function Board(props) {
                 <button
                   className="btn rounded-circle"
                   style={{
-                    fontSize: "30px",
+                    fontSize: "18px",
                     display: "block",
                     marginLeft: "auto",
                     marginRight: "auto",
@@ -222,7 +222,7 @@ export default function Board(props) {
                 <button
                   className="btn rounded-circle"
                   style={{
-                    fontSize: "30px",
+                    fontSize: "18px",
                     display: "block",
                     marginLeft: "auto",
                     marginRight: "auto",
