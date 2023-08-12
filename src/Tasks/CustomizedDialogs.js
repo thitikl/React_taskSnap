@@ -1,36 +1,30 @@
-import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
-import DialogTitle from '@mui/material/DialogTitle';
-import DialogContent from '@mui/material/DialogContent';
-import DialogActions from '@mui/material/DialogActions';
-import IconButton from '@mui/material/IconButton';
-import CloseIcon from '@mui/icons-material/Close';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
-import MenuItem from '@mui/material/MenuItem';
-import Button from '@mui/material/Button';
-import { styled } from '@mui/material/styles';
-import Dialog from '@mui/material/Dialog';
+import React, { useState, useEffect } from "react";
+import PropTypes from "prop-types";
+import DialogTitle from "@mui/material/DialogTitle";
+import DialogContent from "@mui/material/DialogContent";
+import DialogActions from "@mui/material/DialogActions";
+import IconButton from "@mui/material/IconButton";
+import CloseIcon from "@mui/icons-material/Close";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
+import MenuItem from "@mui/material/MenuItem";
+import Button from "@mui/material/Button";
+import { styled } from "@mui/material/styles";
+import Dialog from "@mui/material/Dialog";
 
-const BootstrapDialog = styled(Dialog)(({ theme }) => ({
-  '& .MuiPaper-root': {
-    width: '80%', 
-    maxWidth: 600,
-  },
-}));
+const Popup = styled(Dialog)();
 
-function BootstrapDialogTitle(props) {
+function PopUpTitle(props) {
   const { children, onClose, ...other } = props;
 
   return (
-    <DialogTitle sx={{ m: 0, p: 2 }} {...other}>
+    <DialogTitle {...other}>
       {children}
       {onClose ? (
         <IconButton
-          aria-label="close"
           onClick={onClose}
           sx={{
-            position: 'absolute',
+            position: "absolute",
             right: 8,
             top: 8,
             color: (theme) => theme.palette.grey[500],
@@ -43,12 +37,12 @@ function BootstrapDialogTitle(props) {
   );
 }
 
-BootstrapDialogTitle.propTypes = {
+PopUpTitle.propTypes = {
   children: PropTypes.node,
   onClose: PropTypes.func.isRequired,
 };
 
-const statusOptions = ['plan', 'ongoing', 'finished'];
+const statusOptions = ["plan", "ongoing", "finished"];
 
 export default function CustomizedDialogs({ open, onClose, task, onSave }) {
   const [editedTask, setEditedTask] = useState(task);
@@ -71,34 +65,44 @@ export default function CustomizedDialogs({ open, onClose, task, onSave }) {
   };
 
   return (
-    <BootstrapDialog onClose={onClose} aria-labelledby="customized-dialog-title" open={open}>
-      <BootstrapDialogTitle id="customized-dialog-title" onClose={onClose}>
+    <Popup
+      onClose={onClose}
+      open={open}
+    >
+      <PopUpTitle onClose={onClose}>
         Edit Task
-      </BootstrapDialogTitle>
-      <DialogContent dividers className="dialog-content">
-        <FormControl fullWidth>
+      </PopUpTitle>
+      <DialogContent className="dialog-content">
+        <FormControl>
           <h3>Title</h3>
-          <input type="text" name="title" value={editedTask.title || ''} onChange={handleInputChange} />
+          <input
+            type="text"
+            name="title"
+            value={editedTask.title || ""}
+            onChange={handleInputChange}
+          />
         </FormControl>
-        <FormControl fullWidth>
+        <FormControl>
           <h3>Status</h3>
           <Select
             name="status"
-            value={editedTask.status || ''}
+            value={editedTask.status || ""}
             onChange={handleInputChange}
           >
             {statusOptions.map((status) => (
-              <MenuItem key={status} value={status}>{status}</MenuItem>
+              <MenuItem key={status} value={status}>
+                {status}
+              </MenuItem>
             ))}
           </Select>
         </FormControl>
       </DialogContent>
       <DialogActions>
-        <Button autoFocus onClick={handleSaveChanges}>
+        <Button onClick={handleSaveChanges}>
           Save changes
         </Button>
       </DialogActions>
-    </BootstrapDialog>
+    </Popup>
   );
 }
 
