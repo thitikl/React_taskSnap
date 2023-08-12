@@ -3,7 +3,7 @@ import CustomizedDialogs from './CustomizedDialogs';
 import Completed from "./completed.png";
 import Upcoming from "./upcoming.png";
 import Today from "./today.png";
-import MOCK_DATA from '../data/MOCK_DATA.json'; // Import your mock data
+import MOCK_DATA from '../data/MOCK_DATA.json';
 import "./style.css";
 
 export default function Tasks() {
@@ -20,17 +20,16 @@ export default function Tasks() {
   };
 
   const handleSaveChanges = (editedTask) => {
-    // Update the task in your data source (MOCK_DATA in this case)
     const updatedData = MOCK_DATA.map((task) =>
       task.title === editedTask.title ? editedTask : task
     );
-    // Replace MOCK_DATA with updatedData using your data management method
+
     setTasks(updatedData);
     setSelectedTask(editedTask);
-    setOpenDialog(false); // Close the dialog
+    setOpenDialog(false);
   };
 
-  const [tasks, setTasks] = useState(MOCK_DATA); // Initialize tasks state
+  const [tasks, setTasks] = useState(MOCK_DATA);
 
   const renderTasks = (tasks, src) => {
     return tasks.length > 0 ? (
@@ -38,7 +37,7 @@ export default function Tasks() {
         <div
           className="tasks"
           style={{ display: "flex", cursor: "pointer" }}
-          key={task.title} // Use title as key for demonstration, you might use task id
+          key={task.title} 
           onClick={() => handleClickOpenDialog(task)}
         >
           <img src={src} alt={task.title} />
