@@ -226,28 +226,28 @@ export default function Board(props) {
           style={{ width: "240px" }}
         ></div>
         <div className="container-fluid d-flex vh-100 bg-dark">
+          <div className="col-md-4 d-flex" style={upcomingMain}>
+            <div style={headingcss}>
+              <div className="text-center d-flex justify-content-between" style={upcomingSub}>
+                <span className="ps-2">Upcoming Plans</span> <span className="rounded-circle" style={{color: "white", backgroundColor: "#334756", padding: "1px 8px"}}>{tasks.filter((task) => task.status === "plan").length}</span>
+              </div>
+              <div className="mt-4">{renderTasks(upcomingTasks, "plan")}</div>
+            </div>
+          </div>
           <div className="col-md-4 d-flex boarddata" style={ongoingMain}>
             <div style={headingcss}>
-              <div className="text-center" style={ongoingSub}>
-                Ongoing Plans
+              <div className="text-center d-flex justify-content-between" style={ongoingSub}>
+                <span className="ps-2">Ongoing Plans</span> <span className="rounded-circle" style={{color: "white", backgroundColor: "#334756", padding: "1px 8px"}}>{tasks.filter((task) => task.status === "ongoing").length}</span>
               </div>
               <div className="mt-4 text-dark">
                 {renderTasks(todayTasks, "ongoing")}
               </div>
             </div>
           </div>
-          <div className="col-md-4 d-flex" style={upcomingMain}>
-            <div style={headingcss}>
-              <div className="text-center" style={upcomingSub}>
-                Upcoming Plans
-              </div>
-              <div className="mt-4">{renderTasks(upcomingTasks, "plan")}</div>
-            </div>
-          </div>
           <div className="col-md-4 d-flex" style={finishedMain}>
             <div style={headingcss}>
-              <div className="text-center" style={finishedSub}>
-                Finished
+              <div className="text-center d-flex justify-content-between" style={finishedSub}>
+                <span className="ps-2">Finished Plans</span> <span className="rounded-circle" style={{color: "white", backgroundColor: "#334756", padding: "1px 8px"}}>{tasks.filter((task) => task.status === "finished").length}</span>
               </div>
               <div className="mt-4">
                 {renderTasks(finishedTasks, "finished")}
