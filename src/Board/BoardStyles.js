@@ -49,10 +49,8 @@ export const headingcss = {
   width: "90%",
   marginLeft: "auto",
   marginRight: "auto",
-  
 };
 export const taskDescription = {
-  color: "#ededed",
   fontSize: "12px",
   msOverflowStyle: "none",
   scrollbarWidth: "none",

@@ -17,6 +17,61 @@ import { resetServerContext } from "react-beautiful-dnd";
 export default function Board(props) {
   const { data: tasksData } = props;
   const [tasks, setTasks] = useState(tasksData);
+  const [showDialog, setShowDialog] = useState(false);
+
+  const handleAddButtonClick = () => {
+    setShowDialog(true);
+  };
+
+  const handleDialogClose = () => {
+    setShowDialog(false);
+  };
+
+  const [newTask, setNewTask] = useState({
+    title: "",
+    start: "",
+    due: "",
+    assigned_to: "",
+    label: "",
+    description: "",
+  });
+
+  const handleInputChange = (e) => {
+    console.log(e.target.value);
+    const { name, value } = e.target;
+    setNewTask((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+  };
+
+  const handleAddTask = () => {
+    const newID = `task-${tasks.length}`; // Generate new unique ID
+    newTask.id = newID;
+    newTask.status = "plan"; // Default status
+    setTasks([...tasks, newTask]);
+    setShowDialog(false);
+    setNewTask({
+      title: "",
+      start: "",
+      due: "",
+      assigned_to: "",
+      label: "",
+      description: "",
+    }); // Clear the inputs
+  };
+  
+  function MyButton() {
+    return (
+      <button
+        className="btn rounded-circle AddButton bg-primary" // Updated class name
+        id="AddButton"
+        onClick={handleAddButtonClick}
+      >
+        <FaPlus />
+      </button>
+    );
+  }
 
   const handleOnDragEnd = (result) => {
     try {
@@ -90,8 +145,8 @@ export default function Board(props) {
                     {...provided.dragHandleProps}
                   >
                     <div className="container">
-                      <p>
-                        <span style={{ color: "#f9eaea", fontSize: "18px" }}>
+                      <p className="datadisplay">
+                        <span style={{ fontSize: "18px" }}>
                           <strong>{task.title}</strong>
                         </span>
                         {task.description && (
@@ -103,16 +158,16 @@ export default function Board(props) {
                           </>
                         )}
                         <br />
-                        <span style={{ color: "#ededed", fontSize: "14px" }}>
+                        <span style={{ fontSize: "14px" }}>
                           <i className="bi bi-calendar3-event-fill"></i>
                           <span> </span>
                           {formatDate(task.due)}
                         </span>
                         <br />
-                        <span style={{ color: "silver", fontSize: "14px" }}>
+                        <span style={{ color: "brown", fontSize: "13px" }}>
                           <i className="bi bi-tags-fill"></i> {task.label}
                         </span>
-                        <span style={{ color: "#ededed", fontSize: "14px" }}>
+                        <span style={{ fontSize: "14px" }}>
                           <i className="bi bi-chevron-double-right"></i>{" "}
                           {task.assigned_to}
                         </span>
@@ -146,7 +201,7 @@ export default function Board(props) {
               <div className="text-center" style={ongoingSub}>
                 Ongoing Plans
               </div>
-              <div className="mt-4">{renderTasks(todayTasks, "ongoing")}</div>
+              <div className="mt-4 text-dark">{renderTasks(todayTasks, "ongoing")}</div>
             </div>
           </div>
           <div className="col-md-4 d-flex" style={upcomingMain}>
@@ -169,18 +224,117 @@ export default function Board(props) {
           </div>
           <MyButton />
         </div>
+        {showDialog && (
+          <div className="dialog-overlay">
+            <div className="dialog-box">
+              <h3 className="text-center mb-2 bg-info p-3 rounded">
+                Add New Task
+              </h3>
+              <div className="input-group mb-2">
+                <span className="input-group-text" style={{ width: "120px" }}>
+                  Plan Name:{" "}
+                </span>
+                <input
+                  name="title"
+                  type="text"
+                  className="form-control"
+                  placeholder="Title"
+                  value={newTask.title}
+                  onChange={handleInputChange}
+                  required
+                />
+              </div>
+              <div className="input-group mb-2">
+                <span className="input-group-text" style={{ width: "120px" }}>
+                  Category:{" "}
+                </span>
+                <input
+                  name="label"
+                  type="text"
+                  className="form-control"
+                  placeholder="Assigned to"
+                  aria-label="Server"
+                  value={newTask.label}
+                  onChange={handleInputChange}
+                  required
+                />
+              </div>
+              <div className="input-group mb-2">
+                <span className="input-group-text" style={{ width: "120px" }}>
+                  Description:{" "}
+                </span>
+                <input
+                  name="description"
+                  type="text"
+                  className="form-control"
+                  placeholder="Description"
+                  aria-label="Server"
+                  value={newTask.description}
+                  onChange={handleInputChange}
+                />
+              </div>
+              <div className="input-group mb-2">
+                <span className="input-group-text" style={{ width: "120px" }}>
+                  Member:{" "}
+                </span>
+                <input
+                  name="assigned_to"
+                  type="text"
+                  className="form-control"
+                  placeholder="Category"
+                  aria-label="Server"
+                  value={newTask.assigned_to}
+                  onChange={handleInputChange}
+                />
+              </div>
+              <div className="input-group mb-2">
+                <span className="input-group-text" style={{ width: "120px" }}>
+                  Start Date:{" "}
+                </span>
+                <input
+                  name="start"
+                  type="date"
+                  className="form-control"
+                  placeholder="Start Date"
+                  aria-label="Username"
+                  value={newTask.start}
+                  onChange={handleInputChange}
+                />
+              </div>
+              <div className="input-group mb-2">
+                <span className="input-group-text" style={{ width: "120px" }}>
+                  Due Date:{" "}
+                </span>
+                <input
+                  name="due"
+                  type="date"
+                  className="form-control"
+                  placeholder="Due Date"
+                  aria-label="Server"
+                  value={newTask.due}
+                  onChange={handleInputChange}
+                />
+              </div>
+
+              <br />
+              <center>
+                <button
+                  className="btn btn-primary me-3"
+                  onClick={handleAddTask}
+                >
+                  Add Task
+                </button>
+                <button
+                  className="btn btn-secondary me-3"
+                  onClick={handleDialogClose}
+                >
+                  Cancel
+                </button>
+              </center>
+            </div>
+          </div>
+        )}
       </DragDropContext>
     </>
-  );
-}
-
-function MyButton() {
-  return (
-    <button
-      className="btn rounded-circle AddButton" // Updated class name
-      id="AddButton"
-    >
-      <FaPlus />
-    </button>
   );
 }
