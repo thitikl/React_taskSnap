@@ -51,22 +51,6 @@ export default function Board(props) {
     }));
   };
 
-  // const handleAddTask = () => {
-  //   const newID = `task-${tasks.length}`; // Generate new unique ID
-  //   newTask.id = newID;
-  //   newTask.status = "plan"; // Default status
-  //   setTasks([...tasks, newTask]);
-  //   setShowDialog(false);
-  //   setNewTask({
-  //     title: "",
-  //     start: "",
-  //     due: "",
-  //     assigned_to: "",
-  //     label: "",
-  //     description: "",
-  //   }); // Clear the inputs
-  // };
-
   const handleAddTask = () => {
     const newID = `task-${tasks.length}`; // Generate new unique ID
     newTask.id = newID;
@@ -142,6 +126,7 @@ export default function Board(props) {
 
       // Update the state
       setTasks(updatedTasks);
+      localStorage.setItem("tasks", JSON.stringify(updatedTasks));
     } catch (error) {
       console.error("An error occurred during drag-and-drop", error);
       resetServerContext();
@@ -347,7 +332,8 @@ export default function Board(props) {
                 <button
                   className="btn btn-primary me-3"
                   onClick={handleAddTask}
-                >
+                  disabled={newTask.title.length < 3 || newTask.assigned_to.length < 2 || newTask.label.length < 1 || !newTask.start || !newTask.due}
+                  >
                   Add Task
                 </button>
                 <button
