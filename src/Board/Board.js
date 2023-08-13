@@ -1,23 +1,29 @@
 import React, { useState } from "react";
 import { FaPlus } from "react-icons/fa";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
-import {
-  finishedMain,
-  finishedSub,
-  upcomingMain,
-  upcomingSub,
-  ongoingMain,
-  ongoingSub,
-  headingcss,
-  taskDescription,
-} from "./BoardStyles";
+import { finishedMain, finishedSub, upcomingMain, upcomingSub, ongoingMain, ongoingSub, headingcss, taskDescription } from "./BoardStyles";
 import { formatDate } from "./DateFormat";
 import { resetServerContext } from "react-beautiful-dnd";
 
 export default function Board(props) {
   const { data: tasksData } = props;
-  const [tasks, setTasks] = useState(tasksData);
+
+  // Function to fetch tasks from local storage
+  const fetchTasksFromLocalStorage = () => {
+    const savedTasks = localStorage.getItem("tasks");
+    if (savedTasks) {
+      return JSON.parse(savedTasks);
+    } else {
+      localStorage.setItem("tasks", JSON.stringify(tasksData)); // tasksData is your default array of objects
+      return tasksData; // Return the default tasks
+    }
+  };
+  
+  const initialTasks = fetchTasksFromLocalStorage();
   const [showDialog, setShowDialog] = useState(false);
+  // You can use this function to initialize your tasks state:
+  // And then use `initialTasks` in your useState hook:
+  const [tasks, setTasks] = useState(initialTasks);
 
   const handleAddButtonClick = () => {
     setShowDialog(true);
@@ -45,11 +51,29 @@ export default function Board(props) {
     }));
   };
 
+  // const handleAddTask = () => {
+  //   const newID = `task-${tasks.length}`; // Generate new unique ID
+  //   newTask.id = newID;
+  //   newTask.status = "plan"; // Default status
+  //   setTasks([...tasks, newTask]);
+  //   setShowDialog(false);
+  //   setNewTask({
+  //     title: "",
+  //     start: "",
+  //     due: "",
+  //     assigned_to: "",
+  //     label: "",
+  //     description: "",
+  //   }); // Clear the inputs
+  // };
+
   const handleAddTask = () => {
     const newID = `task-${tasks.length}`; // Generate new unique ID
     newTask.id = newID;
     newTask.status = "plan"; // Default status
-    setTasks([...tasks, newTask]);
+    const updatedTasks = [...tasks, newTask];
+    setTasks(updatedTasks);
+    localStorage.setItem("tasks", JSON.stringify(updatedTasks)); // Save to local storage
     setShowDialog(false);
     setNewTask({
       title: "",
@@ -60,7 +84,7 @@ export default function Board(props) {
       description: "",
     }); // Clear the inputs
   };
-  
+
   function MyButton() {
     return (
       <button
@@ -201,7 +225,9 @@ export default function Board(props) {
               <div className="text-center" style={ongoingSub}>
                 Ongoing Plans
               </div>
-              <div className="mt-4 text-dark">{renderTasks(todayTasks, "ongoing")}</div>
+              <div className="mt-4 text-dark">
+                {renderTasks(todayTasks, "ongoing")}
+              </div>
             </div>
           </div>
           <div className="col-md-4 d-flex" style={upcomingMain}>
