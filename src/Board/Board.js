@@ -4,6 +4,7 @@ import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { finishedMain, finishedSub, upcomingMain, upcomingSub, ongoingMain, ongoingSub, headingcss, taskDescription } from "./BoardStyles";
 import { formatDate } from "./DateFormat";
 import { resetServerContext } from "react-beautiful-dnd";
+import { toast } from "react-hot-toast";
 
 export default function Board(props) {
   const { data: tasksData } = props;
@@ -43,7 +44,7 @@ export default function Board(props) {
   });
 
   const handleInputChange = (e) => {
-    console.log(e.target.value);
+    // console.log(e.target.value);
     const { name, value } = e.target;
     setNewTask((prevState) => ({
       ...prevState,
@@ -67,6 +68,16 @@ export default function Board(props) {
       label: "",
       description: "",
     }); // Clear the inputs
+    toast.success('New Plan, Successfully ADDED 😎', 
+    {
+      icon: '👏',
+      style: {
+        borderRadius: '10px',
+        background: '#333',
+        color: '#fff',
+      },
+    }
+    )
   };
 
   function MyButton() {
@@ -127,6 +138,16 @@ export default function Board(props) {
       // Update the state
       setTasks(updatedTasks);
       localStorage.setItem("tasks", JSON.stringify(updatedTasks));
+      toast.success('Plan Moved Successfully 😎', 
+    {
+      icon: '👏',
+      style: {
+        borderRadius: '10px',
+        background: '#333',
+        color: '#fff',
+      },
+    }
+    )
     } catch (error) {
       console.error("An error occurred during drag-and-drop", error);
       resetServerContext();
