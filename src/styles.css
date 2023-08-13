@@ -46,3 +46,37 @@
 .content{
   margin-left: 220px;
 }
+
+.Alltasks {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.Alltasks:hover {
+  background-color: rgb(51, 71, 86);
+  transform: scale(1.02);
+}
+
+.AddButton {
+  font-size: 25px;
+  display: inline-block;
+  background-color: black;
+  color: white;
+  border: none;
+  position: fixed;
+  right: 15px;
+  bottom: 15px;
+}
+
+#AddButton:hover, .AddButton:hover {
+  background-color: white;
+  color: black;
+  transform: scale(1.2);
+}
+
