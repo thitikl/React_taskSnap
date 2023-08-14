@@ -26,7 +26,7 @@ export default function TaskSnapCalendar(props) {
                 end: moment(holiday.date).toDate(),
                 allDay: true,
                 type: 'holiday',
-                color: '#D71313'
+                color: '#B42B51'
             });
         }
     });
