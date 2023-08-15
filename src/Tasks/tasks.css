@@ -1,0 +1,108 @@
+/* 
+Icon pack
+https://www.flaticon.com/packs/programming-33
+https://www.flaticon.com/packs/presentations-10?word=training
+*/
+.task-main {
+  width: 100%;
+  min-height: 100vh;
+  height: 100%;
+  background-color: #082032;
+  padding: 50px;
+  color: white;
+}
+
+.tasks:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  margin: 10px 0;
+  font-size: 20px;
+  color: #333;
+}
+
+.tasks {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+  /* background-color: #334756; */
+}
+
+.tasks:hover {
+  background-color: #f0f0f0;
+  color: black !important;
+  transform: scale(1.02);
+}
+
+.tasks img {
+  width: 50px;
+  height: 50px;
+  margin-left: 15px;
+  margin-right: 20px;
+  object-fit: contain;
+}
+
+.title {
+  margin: 0;
+  font-size: 28px;
+  color: white;
+}
+
+p {
+  margin: 5px 0;
+  font-size: 18px;
+  color: #CCCC;
+}
+
+.all-tasks {
+  /* display: flex; */
+  justify-content: space-between;
+}
+
+.task-section {
+  flex: 1;
+  margin: 0 10px;
+}
+
+  /* style.css */
+
+/* style.css */
+
+/* Increase the width of the dialog */
+.MuiDialog-paper {
+    width: 80%;
+    max-width: 600px;
+  }
+  
+  /* Center the title and close button */
+  .MuiDialogTitle-root {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  /* Flexbox styling for aligning labels and inputs side by side */
+  .dialog-content {
+    display: flex;
+    flex-direction: column; /* Stack fields vertically */
+    gap: 16px; /* Add spacing between fields */
+  }
+  
+  .dialog-content > div {
+    display: flex;
+    align-items: center;
+  }
+  
+  /* Adjust width of label and input */
+  .dialog-content .MuiInputLabel-root {
+    width: 100px; /* Adjust width as needed */
+    flex: none;
+    margin-right: 16px; /* Add spacing between label and input */
+  }
+    

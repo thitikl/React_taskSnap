@@ -75,7 +75,7 @@
     "status": "ongoing",
     "assigned_to": "Daniel Martinez",
     "start": "2023-08-14",
-    "due": "2023-08-16",
+    "due": "2023-08-15",
     "label": "Meeting",
     "description": ""
   },
@@ -132,7 +132,7 @@
   {
     "id": "13",
     "title": "Code Review",
-    "status": "plan",
+    "status": "ongoing",
     "assigned_to": "Jonathan Black",
     "start": "2023-08-16T10:00:00",
     "due": "2023-08-29T15:00:00",
@@ -165,7 +165,7 @@
     "status": "ongoing",
     "assigned_to": "Jennifer Clark",
     "start": "2023-08-10",
-    "due": "2023-08-15",
+    "due": "2023-08-14",
     "label": "Review",
     "description": ""
   },
