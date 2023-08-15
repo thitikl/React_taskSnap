@@ -87,23 +87,23 @@ export default function Tasks() {
 
   const dueTodayTasks = tasks.filter((task) =>
     task.status === 'ongoing' && moment(task.due).isSame(moment().format('YYYY-MM-DD'), 'day')
-  ).sort((a, b) => { new Date(b.due) - new Date(a.due) })
+  )
 
   const dueInWeekTasks = tasks.filter((task) =>
     task.status === 'ongoing' && moment(task.due).isAfter(moment().format('YYYY-MM-DD'), 'day') && moment(task.due).isBefore(moment().add(7, 'days'))
-  ).sort((a, b) => { new Date(b.due) - new Date(a.due) })
+  )
 
   const dueLaterTasks = tasks.filter((task) =>
     task.status === 'ongoing' && moment(task.due).isAfter(moment().add(7, 'days'))
-  ).sort((a, b) => { new Date(b.due) - new Date(a.due) })
+  )
 
   const planTasks = tasks.filter((task) =>
     task.status === 'plan'
-  ).sort((a, b) => { new Date(b.due) - new Date(a.due) })
+  )
 
   const finishedTasks = tasks.filter((task) =>
     task.status === 'finished'
-  ).sort((a, b) => { new Date(b.due) - new Date(a.due) })
+  )
 
   return (
     <div className="content task-main">
