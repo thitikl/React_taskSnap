@@ -36,8 +36,15 @@ h2 {
 
 .tasks:hover {
   background-color: #f0f0f0;
-  color: black !important;
   transform: scale(1.02);
+}
+
+.tasks:hover .title {
+  color: black;
+}
+
+.tasks:hover p {
+  color: rgb(84, 84, 84);
 }
 
 .tasks img {
