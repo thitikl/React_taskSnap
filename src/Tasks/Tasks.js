@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import CustomizedDialogs from './CustomizedDialogs';
-import Completed from "./completed.png";
+import Completed from "./icon/completed.png";
 // import Upcoming from "./upcoming.png";
 // import Today from "./today.png";
 import MOCK_DATA from '../data/MOCK_DATA.json';
