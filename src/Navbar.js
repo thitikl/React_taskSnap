@@ -1,4 +1,4 @@
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route, NavLink, Link } from "react-router-dom";
 import Board from "./Board/Board";
 import TaskSnapCalendar from "./Calendar/Calendar";
 import Tasks from "./Tasks/Tasks";
@@ -19,19 +19,19 @@ export default function Navbar(props) {
                     </Link>
                     <ul className="navbar-nav">
                         <li className="nav-item">
-                            <Link className="nav-link" to="/" >
+                            <NavLink exact activeClassName="active" className="nav-link" to="/" >
                                 Tasks
-                            </Link>
+                            </NavLink>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link" to="/board">
+                            <NavLink activeClassName="active" className="nav-link" to="/board">
                                 Board
-                            </Link>
+                            </NavLink>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link" to="/calendar">
+                            <NavLink activeClassName="active" className="nav-link" to="/calendar">
                                 Calendar
-                            </Link>
+                            </NavLink>
                         </li>
                     </ul>
                 </nav>

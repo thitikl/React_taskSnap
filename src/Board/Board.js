@@ -5,6 +5,7 @@ import { finishedMain, finishedSub, upcomingMain, upcomingSub, ongoingMain, ongo
 import { formatDate } from "./DateFormat";
 import { resetServerContext } from "react-beautiful-dnd";
 import { toast } from "react-hot-toast";
+import './board.css'
 
 export default function Board(props) {
   const { data: tasksData } = props;
