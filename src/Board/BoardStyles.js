@@ -3,7 +3,7 @@ export const finishedMain = {
   maxHeight: "100%",
   msOverflowStyle: "none",
   scrollbarWidth: "none",
-  backgroundColor: "#407340",
+  backgroundColor: "rgb(63, 157, 36)",
 };
 export const finishedSub = {
   fontSize: "20px",
@@ -18,7 +18,7 @@ export const upcomingMain = {
   maxHeight: "100%",
   msOverflowStyle: "none",
   scrollbarWidth: "none",
-  backgroundColor: "rgb(70, 59, 69)",
+  backgroundColor: "#082032",
 };
 export const upcomingSub = {
   fontSize: "20px",
