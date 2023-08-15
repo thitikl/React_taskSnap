@@ -19,17 +19,17 @@ export default function Navbar(props) {
                     </Link>
                     <ul className="navbar-nav">
                         <li className="nav-item">
-                            <NavLink exact activeClassName="active" className="nav-link" to="/" >
+                            <NavLink activeclassname="active" className="nav-link" to="/" >
                                 Tasks
                             </NavLink>
                         </li>
                         <li className="nav-item">
-                            <NavLink activeClassName="active" className="nav-link" to="/board">
+                            <NavLink activeclassname="active" className="nav-link" to="/board">
                                 Board
                             </NavLink>
                         </li>
                         <li className="nav-item">
-                            <NavLink activeClassName="active" className="nav-link" to="/calendar">
+                            <NavLink activeclassname="active" className="nav-link" to="/calendar">
                                 Calendar
                             </NavLink>
                         </li>
