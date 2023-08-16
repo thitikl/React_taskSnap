@@ -285,7 +285,7 @@ export default function Board(props) {
                   name="label"
                   type="text"
                   className="form-control"
-                  placeholder="Assigned to"
+                  placeholder="Category Name"
                   aria-label="Server"
                   value={newTask.label}
                   onChange={handleInputChange}
@@ -314,7 +314,7 @@ export default function Board(props) {
                   name="assigned_to"
                   type="text"
                   className="form-control"
-                  placeholder="Category"
+                  placeholder="Assigned to"
                   aria-label="Server"
                   value={newTask.assigned_to}
                   onChange={handleInputChange}
