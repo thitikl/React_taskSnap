@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/React_taskSnap/static/css/main.f87a1641.css",
+    "main.js": "/React_taskSnap/static/js/main.2719427d.js",
+    "static/media/testing.png": "/React_taskSnap/static/media/testing.a2c64ec7433748155f99.png",
+    "static/media/design.png": "/React_taskSnap/static/media/design.b7a4881b958e59e6f1ac.png",
+    "static/media/logo.png": "/React_taskSnap/static/media/logo.5d9bd55c37c4f3b25adb.png",
+    "static/media/development.png": "/React_taskSnap/static/media/development.69f3b6e4e36f491bb194.png",
+    "static/media/planning.png": "/React_taskSnap/static/media/planning.0a6426446214f7a29cee.png",
+    "static/media/meeting.png": "/React_taskSnap/static/media/meeting.b5f0deeecd20967dea9c.png",
+    "static/media/training.png": "/React_taskSnap/static/media/training.68448b09079462bfe561.png",
+    "index.html": "/React_taskSnap/index.html",
+    "main.f87a1641.css.map": "/React_taskSnap/static/css/main.f87a1641.css.map",
+    "main.2719427d.js.map": "/React_taskSnap/static/js/main.2719427d.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f87a1641.css",
+    "static/js/main.2719427d.js"
+  ]
+}
