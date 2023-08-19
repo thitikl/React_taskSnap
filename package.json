@@ -11,6 +11,7 @@
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "gh-pages": "^6.0.0",
     "moment": "^2.29.4",
     "react": "^18.2.0",
     "react-beautiful-dnd": "^13.1.1",
@@ -24,11 +25,14 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
+  "homepage": "https://thitikl.github.io/React_taskSnap/",
   "eslintConfig": {
     "extends": [
       "react-app",
