@@ -1,0 +1,14 @@
+.modal-label-and-input{
+    display: block;
+    margin: 5px 0;
+}
+.modal-label{
+    min-width: 90px;
+}
+.modal-input-full-width{
+    width: 300px;
+    height: 35px;
+    display: inline-block;
+    /* border: 1px solid hsl(0, 0%, 80%);
+    border-radius: 4px; */
+}

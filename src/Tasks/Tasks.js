@@ -1,12 +1,12 @@
-import React, { useState } from "react";
-import CustomizedDialogs from './CustomizedDialogs';
-import Completed from "./icon/completed.png";
-// import Upcoming from "./upcoming.png";
-// import Today from "./today.png";
-import MOCK_DATA from '../data/MOCK_DATA.json';
-import "./tasks.css";
+import { useState } from 'react';
 import moment from 'moment';
 
+// Import TaskModal and its methods
+import TaskModal from '../TaskModal/TaskModal';
+import './tasks.css'
+
+// TODO change to dynamic icon
+// https://palett.es/
 // import icons
 import designIcon from './icon/design.png';
 import developmentIcon from './icon/development.png';
@@ -19,30 +19,9 @@ import reviewIcon from './icon/review.png';
 import securityIcon from './icon/security.png';
 import testingIcon from './icon/testing.png';
 import trainingIcon from './icon/training.png';
+import completed from './icon/completed.png';
 
-export default function Tasks() {
-  const [openDialog, setOpenDialog] = useState(false);
-  const [selectedTask, setSelectedTask] = useState(null);
-
-  const handleClickOpenDialog = (task) => {
-    setSelectedTask(task);
-    setOpenDialog(true);
-  };
-
-  const handleCloseDialog = () => {
-    setOpenDialog(false);
-  };
-
-  const handleSaveChanges = (editedTask) => {
-    const updatedData = MOCK_DATA.map((task) =>
-      task.title === editedTask.title ? editedTask : task
-    );
-
-    setTasks(updatedData);
-    setSelectedTask(editedTask);
-    setOpenDialog(false);
-  };
-
+export default function Tasks(props) {
   const iconSelection = (task) => {
     if (task.label.toLowerCase() === 'design') return designIcon;
     else if (task.label.toLowerCase() === 'development') return developmentIcon;
@@ -55,10 +34,8 @@ export default function Tasks() {
     else if (task.label.toLowerCase() === 'security') return securityIcon;
     else if (task.label.toLowerCase() === 'testing') return testingIcon;
     else if (task.label.toLowerCase() === 'training') return trainingIcon;
-    else return Completed;
+    else return completed;
   }
-
-  const [tasks, setTasks] = useState(MOCK_DATA);
 
   const renderTasks = (tasks, status) => {
     return tasks.length > 0 ? (
@@ -67,43 +44,70 @@ export default function Tasks() {
           className="tasks"
           style={{ display: "flex", cursor: "pointer" }}
           key={task.title}
+          // TODO change onclick function
           onClick={() => handleClickOpenDialog(task)}
         >
+          {/* TODO Edit img tag */}
           <img src={iconSelection(task)} alt={task.title} />
           <div>
             <h3 className="title">{task.title}</h3>
             {status === 'ongoing' &&
-              <p>📅 {task.due.includes('T') ? moment(task.due).format("MMM DD, YYYY HH:mm") : moment(task.due).format("MMM DD, YYYY")}</p>
+              <p>📅 {task.dueTime != "" ? moment(task.dueDate).format("MMM DD, YYYY ") + moment(task.dueTime, 'HH:mm:ss').format("h:mm A")  : moment(task.dueDate).format("MMM DD, YYYY")}</p>
             }
-            <p>🧑 {task.assigned_to}</p>
+            <p>🧑 {task.assignedTo}</p>
             <p>🏷️ {task.label}</p>
           </div>
         </div>
       ))
     ) : (
-      <p>No tasks for this status</p>
+      <h5>No tasks for this status</h5>
     );
   };
 
-  const dueTodayTasks = tasks.filter((task) =>
-    task.status === 'ongoing' && moment(task.due).isSame(moment().format('YYYY-MM-DD'), 'day')
+  const dueTodayTasks = props.data.filter((task) =>
+    task.status === 'ongoing' && moment(task.dueDate).isSame(moment().format('YYYY-MM-DD'), 'day')
   )
 
-  const dueInWeekTasks = tasks.filter((task) =>
-    task.status === 'ongoing' && moment(task.due).isAfter(moment().format('YYYY-MM-DD'), 'day') && moment(task.due).isBefore(moment().add(7, 'days'))
+  const dueInWeekTasks = props.data.filter((task) =>
+    task.status === 'ongoing' && moment(task.dueDate).isAfter(moment().format('YYYY-MM-DD'), 'day') && moment(task.dueDate).isBefore(moment().add(7, 'days'))
   )
 
-  const dueLaterTasks = tasks.filter((task) =>
-    task.status === 'ongoing' && moment(task.due).isAfter(moment().add(7, 'days'))
+  const dueLaterTasks = props.data.filter((task) =>
+    task.status === 'ongoing' && moment(task.dueDate).isAfter(moment().add(7, 'days'))
   )
 
-  const planTasks = tasks.filter((task) =>
+  const planTasks = props.data.filter((task) =>
     task.status === 'plan'
   )
 
-  const finishedTasks = tasks.filter((task) =>
+  const finishedTasks = props.data.filter((task) =>
     task.status === 'finished'
   )
+
+  // Selected task for modal showing
+  const [selectedTask, setSelectedTask] = useState(null);
+  const [showModal, setShow] = useState(false);
+  
+  const handleCloseModal = () => setShow(false);
+
+  const handleCloseModalWithChange = (editedTask) => {
+    setSelectedTask(editedTask);
+    const updatedTasks = props.data.map((task) => {
+      if (task.id === editedTask.id) {
+        return editedTask;
+      } else {
+        return task;
+      }
+    });
+    props.modifyData(updatedTasks);
+    console.log(props.data);
+    setShow(false)
+  };
+
+  const handleClickOpenDialog = (task) => {
+    setSelectedTask(task);
+    setShow(true);
+  };
 
   return (
     <div className="content task-main">
@@ -120,7 +124,7 @@ export default function Tasks() {
 
         {dueInWeekTasks.length > 0 &&
           <div className="task-section">
-            <h1>Due in the next 7 days</h1>
+            <h1>Due in a week</h1>
             <hr />
             {renderTasks(dueInWeekTasks, 'ongoing')}
             <br />
@@ -149,20 +153,21 @@ export default function Tasks() {
           <div className="task-section">
             <h1>Finished</h1>
             <hr />
-            {renderTasks(dueLaterTasks, 'finished')}
+            {renderTasks(finishedTasks, 'finished')}
             <br />
           </div>
         }
 
       </div>
-      {selectedTask && (
-        <CustomizedDialogs
-          open={openDialog}
-          onClose={handleCloseDialog}
+      {showModal && (
+        <TaskModal
           task={selectedTask}
-          onSave={handleSaveChanges}
+          showModal={showModal}
+          onClose={handleCloseModal}
+          onSave={handleCloseModalWithChange}
         />
       )}
     </div>
   );
+
 }

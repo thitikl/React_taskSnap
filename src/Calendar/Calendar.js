@@ -36,9 +36,9 @@ export default function TaskSnapCalendar(props) {
     function taskToEvent(task) {
         return {
             title: task.title,
-            start: moment(task.start).toDate(),
-            end: moment(task.due).toDate(),
-            allDay: task.due.includes('T') ? false : true,
+            start: moment(task.startDate).toDate(),
+            end: moment(task.dueDate).toDate(),
+            allDay: task.allDay,
         }
     }
     const newTasks = props.data.map(taskToEvent);
