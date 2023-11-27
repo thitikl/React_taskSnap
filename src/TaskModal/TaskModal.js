@@ -58,7 +58,6 @@ export default function TaskModal(props) {
   };
 
   const handleTimeChange = (event) => {
-    console.log(event.target.value)
     setEditedTask((prevTask) => ({
       ...prevTask,
       [event.target.name]: moment(event.target.value, 'h:mm').format('HH:mm:ss'),

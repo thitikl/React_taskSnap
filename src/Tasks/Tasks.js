@@ -100,7 +100,6 @@ export default function Tasks(props) {
       }
     });
     props.modifyData(updatedTasks);
-    console.log(props.data);
     setShow(false)
   };
 
