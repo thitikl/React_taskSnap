@@ -1,7 +1,7 @@
 import { Routes, Route, NavLink } from "react-router-dom";
-import Board from "./Board/Board";
-import TaskSnapCalendar from "./Calendar/Calendar";
-import Tasks from "./Tasks/Tasks";
+import Board from "./components/Board";
+import TaskSnapCalendar from "./components/Calendar";
+import Tasks from "./components/Tasks";
 import fullLogo from "./img/full-logo.png";
 
 // Bootstrap components

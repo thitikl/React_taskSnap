@@ -8,6 +8,22 @@
   /* display: flex; */
   font-family: 'Roboto Condensed', sans-serif;
 }
+/* For less than lg breakpoint */
+@media (max-width: 991px){
+  .content{
+    padding-top: 100px !important;
+    padding-left: 30px !important;
+    padding-right: 30px !important;
+  }
+}
+
+/* For more than lg brakpoint */
+@media (min-width: 992px){
+  .content{
+    padding-left: 220px !important;
+    background-color: #082032;
+  }
+}
 
 /* ####### */
 /* Sidebar */
@@ -58,11 +74,6 @@
     background-color: #334756 !important;
     width: 100vw;
   }
-  .content{
-    padding-top: 100px !important;
-    padding-left: 30px !important;
-    padding-right: 30px !important;
-  }
 }
 
 /* For more than lg brakpoint */
@@ -102,8 +113,235 @@
     align-items: center;
     margin-bottom: 10px;
   }
-  .content{
-    padding-left: 270px !important;
+}
+
+/* ########## */
+/* TaskModals */
+/* ########## */
+.modal-label-and-input{
+  display: block;
+  margin: 5px 0;
+}
+.modal-label{
+  min-width: 90px;
+}
+.modal-input-full-width{
+  width: 300px;
+  height: 35px;
+  display: inline-block;
+}
+
+/* ##### */
+/* Tasks */
+/* ##### */
+
+/* 
+Icon pack
+https://www.flaticon.com/packs/programming-33
+https://www.flaticon.com/packs/presentations-10?word=training
+*/
+.task-main {
+  width: 100%;
+  min-height: 100vh;
+  height: 100%;
+  background-color: #082032;
+  padding: 50px;
+  color: white;
+}
+
+#tasks .tasks:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+#tasks h1 {
+  margin: 10px 0;
+  font-size: 28px;
+}
+
+#tasks .tasks {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+#tasks .tasks:hover {
+  background-color: #f0f0f0;
+  transform: scale(1.02);
+}
+
+#tasks .tasks:hover .title {
+  color: black;
+}
+
+#tasks .tasks:hover p {
+  color: rgb(84, 84, 84);
+}
+
+#tasks .tasks img {
+  width: 50px;
+  height: 50px;
+  margin-left: 15px;
+  margin-right: 20px;
+  object-fit: contain;
+}
+
+#tasks .title {
+  margin: 0;
+  font-size: 24px;
+  color: white;
+}
+
+#tasks p {
+  margin: 5px 0;
+  font-size: 16px;
+  color: #CCCC;
+}
+
+.all-tasks {
+  /* display: flex; */
+  justify-content: space-between;
+  padding-left: 50px;
+}
+
+.task-section {
+  flex: 1;
+  margin: 0 10px;
+}
+
+/* ###### */
+/* Boards */
+/* ###### */
+.all-boards{
+  padding: 0;
+}
+.Alltasks {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: background-color 0.5s, transform 0.4s;
+  background-color: rgb(255, 255, 255);
+}
+
+.Alltasks:hover {
+  transform: scale(1.05);
+  /* background-color: black; */
+  color: white;
+}
+.datadisplay, .datadisplay p span {
+  color: #212529;
+}
+/* .datadisplay:hover, .datadisplay p span:hover {
+color: white;
+transform: scale(1.05);
+} */
+
+.AddButton {
+  font-size: 25px;
+  display: inline-block;
+  color: white;
+  border: none;
+  position: fixed;
+  right: 15px;
+  bottom: 15px;
+  animation: breathing 1s infinite alternate;
+}
+@keyframes breathing {
+  from {
+    transform: scale(1);
   }
+  to {
+    transform: scale(1.2);
+  }
+}
+
+#AddButton:hover, .AddButton:hover {
+  background-color: white;
+  color: black;
+  transform: scale(1.2);
+}
+
+.dialog-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dialog-box {
+  background: white;
+  padding: 20px;
+  border-radius: 5%;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* ######## */
+/* Calendar */
+/* ######## */
+.main-calendar{
+  padding: 30px;
+  width: 83vw;
+  min-height: 100vh;
+  background-color: #082032;
+  color: #CCCCCC;
+}
+
+/* Style of the name of the month */
+.rbc-toolbar-label{
+  font-weight: bold;
+  font-size: 25px;
+  color: white;
+}
+
+/* Color of top button */
+.rbc-toolbar button{
+  color: #CCCCCC;
+  border-color: #CCCCCC;
+}
+.rbc-active{
+  color: black !important;
+}
+
+/* Border color of calendar */
+.rbc-month-view, .rbc-month-row, .rbc-day-bg, .rbc-month-header, .rbc-row, .rbc-header, 
+.rbc-time-slot, .rbc-timeslot-group, .rbc-time-view{
+  border-color: gray !important;
+}
+
+/* Background color of events */
+.rbc-event{
+  background-color: #345B63;
+  color: #CCCCCC;
+}
+
+/* Background color of agenda */
+.rbc-agenda-event-cell, .rbc-agenda-time-cell, .rbc-agenda-date-cell{
+  background-color: #082032;
+}
+
+/* Background color of date from other months */
+.rbc-off-range-bg{
+  background-color: #2a2a2a !important;
+}
+
+/* Color of today */
+.rbc-today{
+  background-color: #FF4C29 !important;
+}
+.rbc-now{
+  color: black;
 }
 

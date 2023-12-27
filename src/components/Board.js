@@ -1,11 +1,19 @@
 import React, { useState } from "react";
 import { FaPlus } from "react-icons/fa";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
-import { finishedMain, finishedSub, upcomingMain, upcomingSub, ongoingMain, ongoingSub, headingcss, taskDescription } from "./BoardStyles";
+import {
+  finishedMain,
+  finishedSub,
+  upcomingMain,
+  upcomingSub,
+  ongoingMain,
+  ongoingSub,
+  headingcss,
+  taskDescription,
+} from "./BoardStyles";
 import { formatDate } from "./DateFormat";
 import { resetServerContext } from "react-beautiful-dnd";
 import { toast } from "react-hot-toast";
-import './board.css'
 
 export default function Board(props) {
   const { data: tasksData } = props;
@@ -20,7 +28,7 @@ export default function Board(props) {
       return tasksData; // Return the default tasks
     }
   };
-  
+
   const initialTasks = fetchTasksFromLocalStorage();
   const [showDialog, setShowDialog] = useState(false);
   // You can use this function to initialize your tasks state:
@@ -69,16 +77,14 @@ export default function Board(props) {
       label: "",
       description: "",
     }); // Clear the inputs
-    toast.success('New Plan, Successfully ADDED 😎', 
-    {
-      icon: '👏',
+    toast.success("New Plan, Successfully ADDED 😎", {
+      icon: "👏",
       style: {
-        borderRadius: '10px',
-        background: '#333',
-        color: '#fff',
+        borderRadius: "10px",
+        background: "#333",
+        color: "#fff",
       },
-    }
-    )
+    });
   };
 
   function MyButton() {
@@ -139,16 +145,14 @@ export default function Board(props) {
       // Update the state
       setTasks(updatedTasks);
       localStorage.setItem("tasks", JSON.stringify(updatedTasks));
-      toast.success('Plan Moved Successfully 😎', 
-    {
-      icon: '👏',
-      style: {
-        borderRadius: '10px',
-        background: '#333',
-        color: '#fff',
-      },
-    }
-    )
+      toast.success("Plan Moved Successfully 😎", {
+        icon: "👏",
+        style: {
+          borderRadius: "10px",
+          background: "#333",
+          color: "#fff",
+        },
+      });
     } catch (error) {
       console.error("An error occurred during drag-and-drop", error);
       resetServerContext();
@@ -220,25 +224,51 @@ export default function Board(props) {
   const finishedTasks = tasks.filter((task) => task.status === "finished");
 
   return (
-    <>
+    <div className="content">
       <DragDropContext onDragEnd={handleOnDragEnd}>
         <div
           className="fixed-width-sidebar bg-black"
-          style={{ width: "240px" }}
+          style={{ width: "200px" }}
         ></div>
-        <div className="container-fluid d-flex vh-100 bg-dark">
+        <div className="container-fluid d-flex vh-100 bg-dark all-boards">
           <div className="col-md-4 d-flex" style={upcomingMain}>
             <div style={headingcss}>
-              <div className="text-center d-flex justify-content-between" style={upcomingSub}>
-                <span className="ps-2">Upcoming Plans</span> <span className="rounded-circle" style={{color: "white", backgroundColor: "#334756", padding: "1px 8px"}}>{tasks.filter((task) => task.status === "plan").length}</span>
+              <div
+                className="text-center d-flex justify-content-between"
+                style={upcomingSub}
+              >
+                <span className="ps-2">Upcoming Plans</span>{" "}
+                <span
+                  className="rounded-circle"
+                  style={{
+                    color: "white",
+                    backgroundColor: "#334756",
+                    padding: "1px 8px",
+                  }}
+                >
+                  {tasks.filter((task) => task.status === "plan").length}
+                </span>
               </div>
               <div className="mt-4">{renderTasks(upcomingTasks, "plan")}</div>
             </div>
           </div>
           <div className="col-md-4 d-flex boarddata" style={ongoingMain}>
             <div style={headingcss}>
-              <div className="text-center d-flex justify-content-between" style={ongoingSub}>
-                <span className="ps-2">Ongoing Plans</span> <span className="rounded-circle" style={{color: "white", backgroundColor: "#334756", padding: "1px 8px"}}>{tasks.filter((task) => task.status === "ongoing").length}</span>
+              <div
+                className="text-center d-flex justify-content-between"
+                style={ongoingSub}
+              >
+                <span className="ps-2">Ongoing Plans</span>{" "}
+                <span
+                  className="rounded-circle"
+                  style={{
+                    color: "white",
+                    backgroundColor: "#334756",
+                    padding: "1px 8px",
+                  }}
+                >
+                  {tasks.filter((task) => task.status === "ongoing").length}
+                </span>
               </div>
               <div className="mt-4 text-dark">
                 {renderTasks(todayTasks, "ongoing")}
@@ -247,8 +277,21 @@ export default function Board(props) {
           </div>
           <div className="col-md-4 d-flex" style={finishedMain}>
             <div style={headingcss}>
-              <div className="text-center d-flex justify-content-between" style={finishedSub}>
-                <span className="ps-2">Finished Plans</span> <span className="rounded-circle" style={{color: "white", backgroundColor: "#334756", padding: "1px 8px"}}>{tasks.filter((task) => task.status === "finished").length}</span>
+              <div
+                className="text-center d-flex justify-content-between"
+                style={finishedSub}
+              >
+                <span className="ps-2">Finished Plans</span>{" "}
+                <span
+                  className="rounded-circle"
+                  style={{
+                    color: "white",
+                    backgroundColor: "#334756",
+                    padding: "1px 8px",
+                  }}
+                >
+                  {tasks.filter((task) => task.status === "finished").length}
+                </span>
               </div>
               <div className="mt-4">
                 {renderTasks(finishedTasks, "finished")}
@@ -354,8 +397,14 @@ export default function Board(props) {
                 <button
                   className="btn btn-primary me-3"
                   onClick={handleAddTask}
-                  disabled={newTask.title.length < 3 || newTask.assigned_to.length < 2 || newTask.label.length < 1 || !newTask.start || !newTask.due}
-                  >
+                  disabled={
+                    newTask.title.length < 3 ||
+                    newTask.assigned_to.length < 2 ||
+                    newTask.label.length < 1 ||
+                    !newTask.start ||
+                    !newTask.due
+                  }
+                >
                   Add Task
                 </button>
                 <button
@@ -369,6 +418,6 @@ export default function Board(props) {
           </div>
         )}
       </DragDropContext>
-    </>
+    </div>
   );
 }
