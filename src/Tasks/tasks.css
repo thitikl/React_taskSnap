@@ -30,7 +30,6 @@ h1 {
   margin-bottom: 10px;
   cursor: pointer;
   transition: background-color 0.3s, transform 0.3s;
-  /* background-color: #334756; */
 }
 
 .tasks:hover {
@@ -75,40 +74,3 @@ p {
   flex: 1;
   margin: 0 10px;
 }
-
-  /* style.css */
-
-/* style.css */
-
-/* Increase the width of the dialog */
-.MuiDialog-paper {
-    width: 80%;
-    max-width: 600px;
-  }
-  
-  /* Center the title and close button */
-  .MuiDialogTitle-root {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  /* Flexbox styling for aligning labels and inputs side by side */
-  .dialog-content {
-    display: flex;
-    flex-direction: column; /* Stack fields vertically */
-    gap: 16px; /* Add spacing between fields */
-  }
-  
-  .dialog-content > div {
-    display: flex;
-    align-items: center;
-  }
-  
-  /* Adjust width of label and input */
-  .dialog-content .MuiInputLabel-root {
-    width: 100px; /* Adjust width as needed */
-    flex: none;
-    margin-right: 16px; /* Add spacing between label and input */
-  }
-    

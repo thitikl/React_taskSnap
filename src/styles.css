@@ -1,58 +1,98 @@
 /* Color pallete */
 /* https://colorhunt.co/palette/0820322c394b334756ff4c29 */
 
+/* ####### */
+/* General */
+/* ####### */
 .App {
-  display: flex;
+  /* display: flex; */
   font-family: 'Roboto Condensed', sans-serif;
 }
 
-.navbar {
-  flex: 0 0 200px; /* Adjust the width of the navbar as needed */
-  padding: 20px 0;
-  text-align: center;
-}
-
-.navbar-brand {
-  display: inline;
-  margin: auto;
-  align-items: center;
-  color: white;
-  font-size: 20px;
-}
-
-.navbar-nav {
-  margin-top: 20px;
-}
-
-.nav-item{
-  margin-bottom: 10px;
-  display: block;
-  width: 100%;
-}
-
-.nav-link {
-  color: white !important;
-  font-size: 16pt;
-  width: 220px;
-  height: 60px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.nav-side {
-  background-color: #334756;
-  width: 220px;
-  height: 100vh;
+/* ####### */
+/* Sidebar */
+/* ####### */
+.navbar{
   position: fixed;
-  top: 0;
-  left: 0;
+  /* width: 100vw; */
 }
-
-.content{
-  margin-left: 220px;
+.navbar-brand img{
+  width: 200px;
 }
-
+.navbar-toggler{
+  border-width: 0.1px;
+  border-color: gray;
+  transition: border-color 0.3s, transform 0.3s;
+}
+.navbar-toggler:hover{
+  border-color: white;
+}
+.navbar-toggler img{
+  width: 40px;
+  height: 40px;
+}
+.offcanvas{
+  background-color: #2C394B;
+  width: 350px !important;
+  color: white;
+}
+.offcanvas-title img{
+  width: 80%;
+}
 .active{
   background-color: #082032;
 }
+
+/* For less than lg breakpoint */
+@media (max-width: 991px){
+  .navbar{
+    background-color: #334756 !important;
+    width: 100vw;
+  }
+  .content{
+    padding-top: 80px !important;
+  }
+}
+
+/* For more than lg brakpoint */
+@media (min-width: 992px){
+  .navbar{
+    background-color: #334756 !important;
+    padding-top: 20px;
+  }
+  #nav-container{
+    display: flex;
+    flex-direction: column !important;
+    height: 100vh;
+    padding: 0;
+  }
+  .navbar-brand{
+    display: inline;
+    margin: auto;
+  }
+  .navbar-brand{
+    display: inline;
+    margin: auto;
+  }
+  .navbar-nav{
+    display: flex;
+    flex-direction: column !important;
+    margin-top: 20px;
+    align-items: center;
+    padding: 0 !important;
+  }
+  .navbar-nav .nav-link{
+    color: white !important;
+    font-size: 16pt;
+    width: 220px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  .content{
+    padding-left: 270px !important;
+  }
+}
+

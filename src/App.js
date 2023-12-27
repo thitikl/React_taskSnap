@@ -6,7 +6,7 @@ import moment from "moment";
 import data from './data/MOCK_DATA.json';
 import "./styles.css";
 
-import Navbar from "./Navbar";
+import Sidebar from "./Sidebar";
 
 // Purpose of this function is to make dates of mock data dynamic on current date. It can be disabled by commenting out this function.
 const mockDataUpdating = () => {
@@ -33,7 +33,7 @@ export default function App() {
     <>
     <BrowserRouter>
       <div className="App">
-        <Navbar data={tasks} modifyData={setTasks} />
+        <Sidebar data={tasks} modifyData={setTasks} />
       </div>
     </BrowserRouter>
     <Toaster  position="bottom-center"  reverseOrder={false} />
