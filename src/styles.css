@@ -14,7 +14,7 @@
 /* ####### */
 .navbar{
   position: fixed;
-  /* width: 100vw; */
+  z-index: 9999;
 }
 .navbar-brand img{
   width: 200px;
@@ -32,12 +32,21 @@
   height: 40px;
 }
 .offcanvas{
-  background-color: #2C394B;
-  width: 350px !important;
+  background-color: #334756;
+  width: 300px !important;
   color: white;
 }
 .offcanvas-title img{
   width: 80%;
+}
+.offcanvas-body{
+  padding: 0;
+}
+.offcanvas-body .navbar-nav{
+  padding-right: 0 !important;
+}
+.offcanvas-body .navbar-nav .nav-link{
+  padding: 15px 30px;
 }
 .active{
   background-color: #082032;
@@ -50,7 +59,9 @@
     width: 100vw;
   }
   .content{
-    padding-top: 80px !important;
+    padding-top: 100px !important;
+    padding-left: 30px !important;
+    padding-right: 30px !important;
   }
 }
 
