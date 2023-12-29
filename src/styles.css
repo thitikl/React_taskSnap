@@ -5,7 +5,6 @@
 /* General */
 /* ####### */
 .App {
-  /* display: flex; */
   font-family: 'Roboto Condensed', sans-serif;
 }
 /* For less than lg breakpoint */
@@ -203,14 +202,19 @@ https://www.flaticon.com/packs/presentations-10?word=training
 }
 
 .all-tasks {
-  /* display: flex; */
   justify-content: space-between;
-  padding-left: 50px;
 }
 
 .task-section {
   flex: 1;
   margin: 0 10px;
+}
+
+/* For more than lg brakpoint */
+@media (min-width: 992px){
+  .all-tasks {
+    padding-left: 50px;
+  }
 }
 
 /* ###### */
@@ -233,16 +237,11 @@ https://www.flaticon.com/packs/presentations-10?word=training
 
 .Alltasks:hover {
   transform: scale(1.05);
-  /* background-color: black; */
   color: white;
 }
 .datadisplay, .datadisplay p span {
   color: #212529;
 }
-/* .datadisplay:hover, .datadisplay p span:hover {
-color: white;
-transform: scale(1.05);
-} */
 
 .AddButton {
   font-size: 25px;
