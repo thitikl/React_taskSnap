@@ -5,129 +5,138 @@
 /* General */
 /* ####### */
 .App {
-  font-family: 'Roboto Condensed', sans-serif;
+    font-family: "Roboto Condensed", sans-serif;
+}
+h1 {
+    font-size: 28px;
+}
+h3 {
+    font-size: 24px;
+}
+p {
+    font-size: 16px;
 }
 /* For less than lg breakpoint */
-@media (max-width: 991px){
-  .content{
-    padding-top: 100px !important;
-    padding-left: 30px !important;
-    padding-right: 30px !important;
-  }
+@media (max-width: 991px) {
+    .content {
+        padding-top: 100px !important;
+        padding-left: 30px !important;
+        padding-right: 30px !important;
+    }
 }
 
 /* For more than lg brakpoint */
-@media (min-width: 992px){
-  .content{
-    padding-left: 220px !important;
-    background-color: #082032;
-  }
+@media (min-width: 992px) {
+    .content {
+        padding-left: 220px !important;
+        background-color: #082032;
+    }
 }
 
 /* ####### */
 /* Sidebar */
 /* ####### */
-.navbar{
-  position: fixed;
-  z-index: 9999;
+.navbar {
+    position: fixed;
+    z-index: 9999;
 }
-.navbar-brand img{
-  width: 200px;
+.navbar-brand img {
+    width: 200px;
 }
-.navbar-toggler{
-  border-width: 0.1px;
-  border-color: gray;
-  transition: border-color 0.3s, transform 0.3s;
+.navbar-toggler {
+    border-width: 0.1px;
+    border-color: gray;
+    transition: border-color 0.3s, transform 0.3s;
 }
-.navbar-toggler:hover{
-  border-color: white;
+.navbar-toggler:hover {
+    border-color: white;
 }
-.navbar-toggler img{
-  width: 40px;
-  height: 40px;
+.navbar-toggler img {
+    width: 40px;
+    height: 40px;
 }
-.offcanvas{
-  background-color: #334756;
-  width: 300px !important;
-  color: white;
+.offcanvas {
+    background-color: #334756;
+    width: 300px !important;
+    color: white;
 }
-.offcanvas-title img{
-  width: 80%;
+.offcanvas-title img {
+    width: 80%;
 }
-.offcanvas-body{
-  padding: 0;
+.offcanvas-body {
+    padding: 0;
 }
-.offcanvas-body .navbar-nav{
-  padding-right: 0 !important;
+.offcanvas-body .navbar-nav {
+    padding-right: 0 !important;
 }
-.offcanvas-body .navbar-nav .nav-link{
-  padding: 15px 30px;
+.offcanvas-body .navbar-nav .nav-link {
+    padding: 15px 30px;
 }
-.active{
-  background-color: #082032;
+.active {
+    background-color: #082032;
 }
 
 /* For less than lg breakpoint */
-@media (max-width: 991px){
-  .navbar{
-    background-color: #334756 !important;
-    width: 100vw;
-  }
+@media (max-width: 991px) {
+    .navbar {
+        background-color: #334756 !important;
+        width: 100vw;
+    }
 }
 
 /* For more than lg brakpoint */
-@media (min-width: 992px){
-  .navbar{
-    background-color: #334756 !important;
-    padding-top: 20px;
-  }
-  #nav-container{
-    display: flex;
-    flex-direction: column !important;
-    height: 100vh;
-    padding: 0;
-  }
-  .navbar-brand{
-    display: inline;
-    margin: auto;
-  }
-  .navbar-brand{
-    display: inline;
-    margin: auto;
-  }
-  .navbar-nav{
-    display: flex;
-    flex-direction: column !important;
-    margin-top: 20px;
-    align-items: center;
-    padding: 0 !important;
-  }
-  .navbar-nav .nav-link{
-    color: white !important;
-    font-size: 16pt;
-    width: 220px;
-    height: 60px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 10px;
-  }
+@media (min-width: 992px) {
+    .navbar {
+        background-color: #334756 !important;
+        padding-top: 20px;
+    }
+    #nav-container {
+        display: flex;
+        flex-direction: column !important;
+        height: 100vh;
+        padding: 0;
+    }
+    .navbar-brand {
+        display: inline;
+        margin: auto;
+    }
+    .navbar-brand {
+        display: inline;
+        margin: auto;
+    }
+    .navbar-nav {
+        display: flex;
+        flex-direction: column !important;
+        margin-top: 20px;
+        align-items: center;
+        padding: 0 !important;
+    }
+    .navbar-nav .nav-link {
+        color: white !important;
+        font-size: 16pt;
+        width: 220px;
+        height: 60px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 10px;
+    }
 }
 
 /* ########## */
 /* TaskModals */
 /* ########## */
-.modal-label-and-input{
-  display: block;
-  margin: 5px 0;
+.modal-label-and-input {
+    display: block;
+    margin: 5px 0;
 }
-.modal-label{
-  min-width: 90px;
+.modal-label {
+    min-width: 90px;
 }
-.modal-input-full-width{
-  width: 300px;
-  height: 35px;
-  display: inline-block;
+.modal-input-full-width {
+    width: 300px;
+    height: 35px;
+    display: inline-block;
 }
 
 /* ##### */
@@ -140,87 +149,151 @@ https://www.flaticon.com/packs/programming-33
 https://www.flaticon.com/packs/presentations-10?word=training
 */
 .task-main {
-  width: 100%;
-  min-height: 100vh;
-  height: 100%;
-  background-color: #082032;
-  padding: 50px;
-  color: white;
+    width: 100%;
+    min-height: 100vh;
+    height: 100%;
+    background-color: #082032;
+    padding: 50px;
+    color: white;
 }
 
 #tasks .tasks:hover {
-  background-color: rgba(0, 0, 0, 0.1);
+    background-color: rgba(0, 0, 0, 0.1);
 }
 
 #tasks h1 {
-  margin: 10px 0;
-  font-size: 28px;
+    margin: 10px 0;
 }
 
 #tasks .tasks {
-  display: flex;
-  align-items: center;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  margin-bottom: 10px;
-  cursor: pointer;
-  transition: background-color 0.3s, transform 0.3s;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
 }
 
 #tasks .tasks:hover {
-  background-color: #f0f0f0;
-  transform: scale(1.02);
+    background-color: #f0f0f0;
+    transform: scale(1.02);
 }
 
 #tasks .tasks:hover .title {
-  color: black;
+    color: black;
 }
 
 #tasks .tasks:hover p {
-  color: rgb(84, 84, 84);
+    color: rgb(84, 84, 84);
 }
 
 #tasks .tasks img {
-  width: 50px;
-  height: 50px;
-  margin-left: 15px;
-  margin-right: 20px;
-  object-fit: contain;
+    width: 50px;
+    height: 50px;
+    margin-left: 15px;
+    margin-right: 20px;
+    object-fit: contain;
 }
 
 #tasks .title {
-  margin: 0;
-  font-size: 24px;
-  color: white;
+    margin: 0;
+    color: white;
 }
 
 #tasks p {
-  margin: 5px 0;
-  font-size: 16px;
-  color: #CCCC;
+    margin: 5px 0;
+    color: #e1e1e1cc;
 }
 
 .all-tasks {
-  justify-content: space-between;
+    justify-content: space-between;
 }
 
 .task-section {
-  flex: 1;
-  margin: 0 10px;
+    flex: 1;
+    margin: 0 10px;
 }
 
 /* For more than lg brakpoint */
-@media (min-width: 992px){
-  .all-tasks {
-    padding-left: 50px;
-  }
+@media (min-width: 992px) {
+    .all-tasks {
+        padding-left: 50px;
+    }
 }
 
 /* ###### */
 /* Boards */
 /* ###### */
-.all-boards{
+#board {
+    background-color: #082032;
+}
+#board .board-status {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: first start;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    margin: 10px;
+    background-color: #2c394b;
+}
+#board .board-status h1 {
+    color: white;
+    margin: 10px auto;
+}
+#board .board-status hr {
+    width: 100%;
+    border: 1px solid white;
+}
+#board .board-task {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 10px;
+    background-color: #345b63;
+    width: 80%;
+}
+#board .board-task-title {
+    color: white;
+}
+#board .board-task p {
+    margin-bottom: 0;
+    color: #e1e1e1cc;
+}
+
+/* For less than lg breakpoint */
+@media (max-width: 991px) {
+    #board {
+        padding-top: 100px !important;
+    }
+    #board .board-status {
+        margin-bottom: 30px;
+    }
+}
+
+/* For more than lg brakpoint */
+@media (min-width: 992px) {
+    #board {
+        padding-top: 30px !important;
+        min-height: 100vh;
+        display: flex;
+        align-items: first start;
+        justify-content: center;
+    }
+    #board .board-status {
+        width: 30%;
+        min-height: 90vh;
+    }
+}
+
+/* .all-boards{
   padding: 0;
 }
 .Alltasks {
@@ -285,62 +358,70 @@ https://www.flaticon.com/packs/presentations-10?word=training
   padding: 20px;
   border-radius: 5%;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-}
+} */
 
 /* ######## */
 /* Calendar */
 /* ######## */
-.main-calendar{
-  padding: 30px;
-  width: 83vw;
-  min-height: 100vh;
-  background-color: #082032;
-  color: #CCCCCC;
+.main-calendar {
+    padding: 30px;
+    width: 83vw;
+    min-height: 100vh;
+    background-color: #082032;
+    color: #e1e1e1cc;
 }
 
 /* Style of the name of the month */
-.rbc-toolbar-label{
-  font-weight: bold;
-  font-size: 25px;
-  color: white;
+.rbc-toolbar-label {
+    font-weight: bold;
+    font-size: 25px;
+    color: white;
 }
 
 /* Color of top button */
-.rbc-toolbar button{
-  color: #CCCCCC;
-  border-color: #CCCCCC;
+.rbc-toolbar button {
+    color: #e1e1e1cc;
+    border-color: #e1e1e1cc;
 }
-.rbc-active{
-  color: black !important;
+.rbc-active {
+    color: black !important;
 }
 
 /* Border color of calendar */
-.rbc-month-view, .rbc-month-row, .rbc-day-bg, .rbc-month-header, .rbc-row, .rbc-header, 
-.rbc-time-slot, .rbc-timeslot-group, .rbc-time-view{
-  border-color: gray !important;
+.rbc-month-view,
+.rbc-month-row,
+.rbc-day-bg,
+.rbc-month-header,
+.rbc-row,
+.rbc-header,
+.rbc-time-slot,
+.rbc-timeslot-group,
+.rbc-time-view {
+    border-color: gray !important;
 }
 
 /* Background color of events */
-.rbc-event{
-  background-color: #345B63;
-  color: #CCCCCC;
+.rbc-event {
+    background-color: #345b63;
+    color: #e1e1e1cc;
 }
 
 /* Background color of agenda */
-.rbc-agenda-event-cell, .rbc-agenda-time-cell, .rbc-agenda-date-cell{
-  background-color: #082032;
+.rbc-agenda-event-cell,
+.rbc-agenda-time-cell,
+.rbc-agenda-date-cell {
+    background-color: #082032;
 }
 
 /* Background color of date from other months */
-.rbc-off-range-bg{
-  background-color: #2a2a2a !important;
+.rbc-off-range-bg {
+    background-color: #2a2a2a !important;
 }
 
 /* Color of today */
-.rbc-today{
-  background-color: #FF4C29 !important;
+.rbc-today {
+    background-color: #ff4c29 !important;
 }
-.rbc-now{
-  color: black;
+.rbc-now {
+    color: black;
 }
-
