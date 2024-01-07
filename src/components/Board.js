@@ -1,5 +1,6 @@
 import moment from "moment";
 import { useState } from "react";
+import TaskModal from "./TaskModal";
 
 function Board(props) {
   var data = props.data;
@@ -32,6 +33,32 @@ function Board(props) {
 
   var columnOrder = ["plan", "ongoing", "finished"];
 
+  const [selectedTask, setSelectedTask] = useState(null);
+  const [showModal, setShow] = useState(false);
+
+  const handleCloseModal = () => {
+    console.log("close");
+    setShow(false);
+  };
+
+  const handleCloseModalWithChange = (editedTask) => {
+    setSelectedTask(editedTask);
+    const updatedTasks = props.data.map((task) => {
+      if (task.id === editedTask.id) {
+        return editedTask;
+      } else {
+        return task;
+      }
+    });
+    props.modifyData(updatedTasks);
+    handleCloseModal();
+  };
+
+  const handleClickOpenDialog = (task) => {
+    setSelectedTask(task);
+    setShow(true);
+  };
+
   return (
     <div className="content" id="board">
       {columnOrder.map((status) => {
@@ -42,7 +69,11 @@ function Board(props) {
             <div className="board-tasks-container">
               {columns[status].tasks.map((task) => {
                 return (
-                  <div className="board-task" key={task.id}>
+                  <div
+                    className="board-task"
+                    key={task.id}
+                    onClick={() => handleClickOpenDialog(task)}
+                  >
                     <h3 className="board-task-title">{task.title}</h3>
                     <p>
                       {task.dueDate != ""
@@ -61,6 +92,14 @@ function Board(props) {
           </div>
         );
       })}
+      {showModal && (
+        <TaskModal
+          task={selectedTask}
+          showModal={showModal}
+          onHide={handleCloseModal}
+          onSave={handleCloseModalWithChange}
+        />
+      )}
     </div>
   );
 }

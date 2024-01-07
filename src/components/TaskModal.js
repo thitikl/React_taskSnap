@@ -71,7 +71,7 @@ export default function TaskModal(props) {
 
   return (
     <div className="content">
-      <Modal show={props.showModal} onHide={props.handleCloseModal}>
+      <Modal show={props.showModal} onHide={props.onHide} centered>
         <Modal.Header closeButton>
           <Modal.Title>{heading}</Modal.Title>
         </Modal.Header>
@@ -213,7 +213,7 @@ export default function TaskModal(props) {
           </form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={props.onClose}>
+          <Button variant="secondary" onClick={props.onHide}>
             Close
           </Button>
           <Button variant="primary" onClick={handleCloseModalWithChange}>

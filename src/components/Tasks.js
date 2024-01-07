@@ -44,8 +44,7 @@ export default function Tasks(props) {
         <div
           className="tasks"
           style={{ display: "flex", cursor: "pointer" }}
-          key={task.title}
-          // TODO change onclick function
+          key={task.id}
           onClick={() => handleClickOpenDialog(task)}
         >
           {/* TODO Edit img tag */}
@@ -170,7 +169,7 @@ export default function Tasks(props) {
         <TaskModal
           task={selectedTask}
           showModal={showModal}
-          onClose={handleCloseModal}
+          onHide={handleCloseModal}
           onSave={handleCloseModalWithChange}
         />
       )}

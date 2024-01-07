@@ -263,6 +263,7 @@ https://www.flaticon.com/packs/presentations-10?word=training
   margin: 10px;
   background-color: #345b63;
   width: 80%;
+  cursor: pointer;
 }
 #board .board-status .board-tasks-container {
   width: 100%;
