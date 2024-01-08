@@ -66,7 +66,7 @@ export default function TaskModal(props) {
 
   const handleCloseModalWithChange = () => {
     props.onSave(editedTask);
-    props.onClose();
+    props.onHide();
   };
 
   return (

@@ -295,7 +295,7 @@ https://www.flaticon.com/packs/presentations-10?word=training
 
 /* For more than lg brakpoint */
 @media (min-width: 992px) {
-  #board {
+  #board .board-all-status {
     padding-top: 30px !important;
     min-height: 100vh;
     display: flex;
