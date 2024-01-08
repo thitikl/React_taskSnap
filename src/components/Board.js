@@ -8,39 +8,32 @@ function Board(props) {
     plan: {
       id: "plan",
       title: "Plan",
-      tasks: [],
+      tasks: null,
     },
     ongoing: {
       id: "ongoing",
       title: "Ongoing",
-      tasks: [],
+      tasks: null,
     },
     finished: {
       id: "finished",
       title: "Finished",
-      tasks: [],
+      tasks: null,
     },
   });
 
-  const [isUpdated, setUpdate] = useState(false);
-  useEffect(() => {
-    console.log("use effect");
-    data.map((task) => {
-      if (task.status == "plan") {
-        columns.plan.tasks.push(task);
-      } else if (task.status == "ongoing") {
-        columns.ongoing.tasks.push(task);
-      } else if (task.status == "finished") {
-        columns.finished.tasks.push(task);
-      }
-    });
-    setUpdate(true);
-  }, [data]);
+  var planTasks = data.filter((task) => task.status == "plan");
+  var ongoingTasks = data.filter((task) => task.status == "ongoing");
+  var finishedTasks = data.filter((task) => task.status == "finished");
+
+  columns.plan.tasks = planTasks;
+  columns.ongoing.tasks = ongoingTasks;
+  columns.finished.tasks = finishedTasks;
 
   var columnOrder = ["plan", "ongoing", "finished"];
 
   const renderTasks = (status) => {
-    console.log("render task");
+    console.log(columns[status].tasks);
     return columns[status].tasks.map((task) => (
       <div
         className="board-task"
@@ -96,7 +89,9 @@ function Board(props) {
               <h1>{columns[status].title}</h1>
               <hr />
               <div className="board-tasks-container">
-                {isUpdated ? renderTasks(status) : "No Task to display"}
+                {columns[status].tasks.length > 0
+                  ? renderTasks(status)
+                  : "No Task to display"}
               </div>
             </div>
           );
