@@ -1,6 +1,9 @@
 import moment from "moment";
 import { useState, useEffect } from "react";
 import TaskModal from "./TaskModal";
+import { IconContext } from "react-icons";
+import { BsGripVertical } from "react-icons/bs";
+import { Container, Row, Col } from "react-bootstrap";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 
 function Board(props) {
@@ -23,9 +26,18 @@ function Board(props) {
     },
   });
 
-  var planTasks = data.filter((task) => task.status == "plan");
-  var ongoingTasks = data.filter((task) => task.status == "ongoing");
-  var finishedTasks = data.filter((task) => task.status == "finished");
+  let [planTasks, setPlanTasks] = useState(
+    data.filter((task) => task.status == "plan")
+  );
+  let [ongoingTasks, setOngoingTasks] = useState(
+    data.filter((task) => task.status == "ongoing")
+  );
+  let [finishedTasks, setFinishedTasks] = useState(
+    data.filter((task) => task.status == "finished")
+  );
+  // var planTasks = data.filter((task) => task.status == "plan");
+  // var ongoingTasks = data.filter((task) => task.status == "ongoing");
+  // var finishedTasks = data.filter((task) => task.status == "finished");
 
   columns.plan.tasks = planTasks;
   columns.ongoing.tasks = ongoingTasks;
@@ -37,26 +49,36 @@ function Board(props) {
     return columns[status].tasks.map((task, index) => (
       <Draggable draggableId={task.id} index={index} key={task.id}>
         {(provided, snapshot) => (
-          <div
+          <Container
             className="board-task"
             key={task.id}
             onClick={() => handleClickOpenDialog(task)}
             ref={provided.innerRef}
             {...provided.draggableProps}
-            {...provided.dragHandleProps}
           >
-            <h3 className="board-task-title">{task.title}</h3>
-            <p>
-              {task.dueDate != ""
-                ? task.dueTime != ""
-                  ? "📅 " +
-                    moment(task.dueDate).format("MMM DD, YYYY ") +
-                    moment(task.dueTime, "HH:mm:ss").format("h:mm A")
-                  : "📅 " + moment(task.dueDate).format("MMM DD, YYYY")
-                : ""}
-            </p>
-            <p>🏷️ {task.label}</p>
-          </div>
+            <Row>
+              <Col>
+                <h3 className="board-task-title">{task.title}</h3>
+                <p>
+                  {task.dueDate != ""
+                    ? task.dueTime != ""
+                      ? "📅 " +
+                        moment(task.dueDate).format("MMM DD, YYYY ") +
+                        moment(task.dueTime, "HH:mm:ss").format("h:mm A")
+                      : "📅 " + moment(task.dueDate).format("MMM DD, YYYY")
+                    : ""}
+                </p>
+                <p>🏷️ {task.label}</p>
+              </Col>
+              <Col xs={1} className="grip-container">
+                <IconContext.Provider value={{ size: "2em" }}>
+                  <div {...provided.dragHandleProps}>
+                    <BsGripVertical className="grip" />
+                  </div>
+                </IconContext.Provider>
+              </Col>
+            </Row>
+          </Container>
         )}
       </Draggable>
     ));
@@ -80,10 +102,13 @@ function Board(props) {
         newTasks.splice(source.index, 1);
         var task = data.find((task) => task.id == draggableId);
         newTasks.splice(destination.index, 0, task);
-        setColumns({
-          ...columns,
-          [start.id]: { ...start, tasks: newTasks },
-        });
+        if (start.id === "plan") setPlanTasks(newTasks);
+        else if (start.id === "ongoing") setOngoingTasks(newTasks);
+        else if (start.id === "finished") setFinishedTasks(newTasks);
+        // setColumns({
+        //   ...columns,
+        //   [start.id]: { ...start, tasks: newTasks },
+        // });
         return;
       } else {
         const startTasks = Array.from(start.tasks);
