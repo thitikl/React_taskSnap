@@ -40,7 +40,9 @@ export default function TaskSnapCalendar(props) {
       allDay: task.allDay,
     };
   }
-  const newTasks = props.data.map(taskToEvent);
+  const newTasks = props.data
+    .filter((data) => data.status === "ongoing")
+    .map(taskToEvent);
   useEffect(() => {
     setTasks(newTasks);
   }, []);
@@ -49,7 +51,7 @@ export default function TaskSnapCalendar(props) {
   const events = [...holidayEvents, ...tasks];
 
   return (
-    <div className="content">
+    <div className="content" id="calendar">
       <Calendar
         className="main-calendar"
         localizer={localizer}
