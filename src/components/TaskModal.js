@@ -15,6 +15,20 @@ export default function TaskModal(props) {
     { value: "finished", label: "Finished" },
   ];
 
+  var labels = [
+    { value: "design", label: "Design" },
+    { value: "development", label: "Development" },
+    { value: "infrastructure", label: "Infrastructure" },
+    { value: "meeting", label: "Meeting" },
+    { value: "migration", label: "Migration" },
+    { value: "planning", label: "Planning" },
+    { value: "optimization", label: "Optimization" },
+    { value: "review", label: "Review" },
+    { value: "testing", label: "Testing" },
+    { value: "training", label: "Training" },
+    { value: "security", label: "Security" },
+  ];
+
   // Get if it is all day event
   const [allDay, setAllDay] = useState(editedTask.allDay);
 
@@ -31,10 +45,18 @@ export default function TaskModal(props) {
   };
 
   // Handle select change
-  const handleSelectChange = (selectedOption) => {
+  const handleStatusChange = (selectedOption) => {
     setEditedTask((prevTask) => ({
       ...prevTask,
       status: selectedOption.value,
+    }));
+  };
+
+  // Handle label change
+  const handleLabelChange = (selectedOption) => {
+    setEditedTask((prevTask) => ({
+      ...prevTask,
+      label: selectedOption.value,
     }));
   };
 
@@ -102,10 +124,10 @@ export default function TaskModal(props) {
                 value={statuses.value}
                 options={statuses}
                 defaultValue={statuses.filter(
-                  (status) => status.value == editedTask.status
+                  (status) => status.value === editedTask.status
                 )}
                 name="status"
-                onChange={handleSelectChange}
+                onChange={handleStatusChange}
               />
             </div>
 
@@ -129,7 +151,7 @@ export default function TaskModal(props) {
               <label for="start" className="modal-label">
                 Start date
               </label>
-              {props.mode == "new" ? (
+              {props.mode === "new" ? (
                 <input
                   type="date"
                   id="date-start"
@@ -200,13 +222,15 @@ export default function TaskModal(props) {
               <label for="label" className="modal-label">
                 Label
               </label>
-              <input
-                type="text"
-                name="label"
-                id="label"
+              <Select
                 className="modal-input-full-width"
-                defaultValue={editedTask.label}
-                onChange={handleInputChange}
+                value={labels.value}
+                options={labels}
+                defaultValue={labels.filter(
+                  (label) => label.label === editedTask.label
+                )}
+                name="label"
+                onChange={handleLabelChange}
               />
               <br />
             </div>

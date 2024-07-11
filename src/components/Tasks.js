@@ -7,38 +7,8 @@ import { newTask } from "../constant/newTask";
 
 // TODO change to dynamic icon
 // https://palett.es/
-// import icons
-import designIcon from "../icon/design.png";
-import developmentIcon from "../icon/development.png";
-import infrastructureIcon from "../icon/infrastructure.png";
-import meetingIcon from "../icon/meeting.png";
-import migrationIcon from "../icon/migration.png";
-import optimizationIcon from "../icon/optimization.png";
-import planningIcon from "../icon/planning.png";
-import reviewIcon from "../icon/review.png";
-import securityIcon from "../icon/security.png";
-import testingIcon from "../icon/testing.png";
-import trainingIcon from "../icon/training.png";
-import completed from "../icon/completed.png";
 
 export default function Tasks(props) {
-  const iconSelection = (task) => {
-    if (task.label.toLowerCase() === "design") return designIcon;
-    else if (task.label.toLowerCase() === "development") return developmentIcon;
-    else if (task.label.toLowerCase() === "infrastructure")
-      return infrastructureIcon;
-    else if (task.label.toLowerCase() === "meeting") return meetingIcon;
-    else if (task.label.toLowerCase() === "migration") return migrationIcon;
-    else if (task.label.toLowerCase() === "optimization")
-      return optimizationIcon;
-    else if (task.label.toLowerCase() === "planning") return planningIcon;
-    else if (task.label.toLowerCase() === "review") return reviewIcon;
-    else if (task.label.toLowerCase() === "security") return securityIcon;
-    else if (task.label.toLowerCase() === "testing") return testingIcon;
-    else if (task.label.toLowerCase() === "training") return trainingIcon;
-    else return completed;
-  };
-
   const renderTasks = (tasks, status) => {
     return tasks.length > 0 ? (
       tasks.map((task) => (
@@ -49,7 +19,10 @@ export default function Tasks(props) {
           onClick={() => handleClickOpenDialog(task)}
         >
           {/* TODO Edit img tag */}
-          <img src={iconSelection(task)} alt={task.title} />
+          <img
+            src={require("../icon/" + task.label.toLowerCase() + ".png")}
+            alt={task.title}
+          />
           <div>
             <h3 className="title">{task.title}</h3>
             {status === "ongoing" && (
