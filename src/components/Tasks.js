@@ -3,6 +3,7 @@ import moment from "moment";
 
 // Import TaskModal and its methods
 import TaskModal from "./TaskModal";
+import { newTask } from "../constant/newTask";
 
 // TODO change to dynamic icon
 // https://palett.es/
@@ -54,7 +55,7 @@ export default function Tasks(props) {
             {status === "ongoing" && (
               <p>
                 📅{" "}
-                {task.dueTime != ""
+                {task.dueTime !== ""
                   ? moment(task.dueDate).format("MMM DD, YYYY ") +
                     moment(task.dueTime, "HH:mm:ss").format("h:mm A")
                   : moment(task.dueDate).format("MMM DD, YYYY")}
@@ -96,6 +97,7 @@ export default function Tasks(props) {
   // Selected task for modal showing
   const [selectedTask, setSelectedTask] = useState(null);
   const [showModal, setShow] = useState(false);
+  const [showNewModal, setShowNewModal] = useState(false);
 
   const handleCloseModal = () => setShow(false);
 
@@ -115,6 +117,21 @@ export default function Tasks(props) {
   const handleClickOpenDialog = (task) => {
     setSelectedTask(task);
     setShow(true);
+  };
+
+  const handleClickNewTask = () => {
+    setShowNewModal(true);
+  };
+
+  const handleCloseNewModal = () => {
+    setShowNewModal(false);
+  };
+
+  const handleCloseNewModalWithChange = (editedTask) => {
+    const updatedTasks = props.data;
+    updatedTasks.push(editedTask);
+    props.modifyData(updatedTasks);
+    setShowNewModal(false);
   };
 
   return (
@@ -165,12 +182,25 @@ export default function Tasks(props) {
           </div>
         )}
       </div>
+      <div id="add-task" onClick={handleClickNewTask}>
+        <div id="vertical"></div>
+        <div id="horizontal"></div>
+      </div>
       {showModal && (
         <TaskModal
           task={selectedTask}
           showModal={showModal}
           onHide={handleCloseModal}
           onSave={handleCloseModalWithChange}
+        />
+      )}
+      {showNewModal && (
+        <TaskModal
+          task={newTask}
+          mode="new"
+          showModal={showNewModal}
+          onHide={handleCloseNewModal}
+          onSave={handleCloseNewModalWithChange}
         />
       )}
     </div>
