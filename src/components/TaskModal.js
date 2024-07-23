@@ -201,22 +201,6 @@ export default function TaskModal(props) {
               )}
             </div>
 
-            {/* Assigned to */}
-            <div className="modal-label-and-input">
-              <label for="assigned_to" className="modal-label">
-                Assigned to
-              </label>
-              <input
-                type="text"
-                name="assignedTo"
-                id="assignedTo"
-                className="modal-input-full-width"
-                defaultValue={editedTask.assignedTo}
-                onChange={handleInputChange}
-              />
-              <br />
-            </div>
-
             {/* Label */}
             <div className="modal-label-and-input">
               <label for="label" className="modal-label">

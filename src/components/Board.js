@@ -3,8 +3,16 @@ import { useState, useEffect } from "react";
 import TaskModal from "./TaskModal";
 
 function Board(props) {
-  var data = props.data;
-  const [columns, setColumns] = useState({
+  // var data = props.data;
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    fetch(process.env.REACT_APP_API_URL)
+      .then((response) => response.json())
+      .then((data) => setData(data))
+      .catch((error) => console.error("Error:", error));
+  }, []);
+
+  const columns = {
     plan: {
       id: "plan",
       title: "Plan",
@@ -20,11 +28,11 @@ function Board(props) {
       title: "Finished",
       tasks: null,
     },
-  });
+  };
 
-  var planTasks = data.filter((task) => task.status == "plan");
-  var ongoingTasks = data.filter((task) => task.status == "ongoing");
-  var finishedTasks = data.filter((task) => task.status == "finished");
+  var planTasks = data.filter((task) => task.status === "plan");
+  var ongoingTasks = data.filter((task) => task.status === "ongoing");
+  var finishedTasks = data.filter((task) => task.status === "finished");
 
   columns.plan.tasks = planTasks;
   columns.ongoing.tasks = ongoingTasks;
@@ -33,7 +41,6 @@ function Board(props) {
   var columnOrder = ["plan", "ongoing", "finished"];
 
   const renderTasks = (status) => {
-    console.log(columns[status].tasks);
     return columns[status].tasks.map((task) => (
       <div
         className="board-task"
@@ -42,8 +49,8 @@ function Board(props) {
       >
         <h3 className="board-task-title">{task.title}</h3>
         <p>
-          {task.dueDate != ""
-            ? task.dueTime != ""
+          {task.dueDate !== null
+            ? !task.allDay
               ? "📅 " +
                 moment(task.dueDate).format("MMM DD, YYYY ") +
                 moment(task.dueTime, "HH:mm:ss").format("h:mm A")

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import moment from "moment";
 
 // Import TaskModal and its methods
@@ -9,6 +9,14 @@ import { newTask } from "../constant/newTask";
 // https://palett.es/
 
 export default function Tasks(props) {
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    fetch(process.env.REACT_APP_API_URL)
+      .then((response) => response.json())
+      .then((data) => setData(data))
+      .catch((error) => console.error("Error:", error));
+  }, []);
+
   const renderTasks = (tasks, status) => {
     return tasks.length > 0 ? (
       tasks.map((task) => (
@@ -28,13 +36,12 @@ export default function Tasks(props) {
             {status === "ongoing" && (
               <p>
                 📅{" "}
-                {task.dueTime !== ""
+                {!task.allDay
                   ? moment(task.dueDate).format("MMM DD, YYYY ") +
                     moment(task.dueTime, "HH:mm:ss").format("h:mm A")
                   : moment(task.dueDate).format("MMM DD, YYYY")}
               </p>
             )}
-            <p>🧑 {task.assignedTo}</p>
             <p>🏷️ {task.label}</p>
           </div>
         </div>
@@ -44,28 +51,28 @@ export default function Tasks(props) {
     );
   };
 
-  const dueTodayTasks = props.data.filter(
+  const dueTodayTasks = data.filter(
     (task) =>
       task.status === "ongoing" &&
       moment(task.dueDate).isSame(moment().format("YYYY-MM-DD"), "day")
   );
 
-  const dueInWeekTasks = props.data.filter(
+  const dueInWeekTasks = data.filter(
     (task) =>
       task.status === "ongoing" &&
       moment(task.dueDate).isAfter(moment().format("YYYY-MM-DD"), "day") &&
       moment(task.dueDate).isBefore(moment().add(7, "days"))
   );
 
-  const dueLaterTasks = props.data.filter(
+  const dueLaterTasks = data.filter(
     (task) =>
       task.status === "ongoing" &&
       moment(task.dueDate).isAfter(moment().add(7, "days"))
   );
 
-  const planTasks = props.data.filter((task) => task.status === "plan");
+  const planTasks = data.filter((task) => task.status === "plan");
 
-  const finishedTasks = props.data.filter((task) => task.status === "finished");
+  const finishedTasks = data.filter((task) => task.status === "finished");
 
   // Selected task for modal showing
   const [selectedTask, setSelectedTask] = useState(null);
@@ -76,7 +83,7 @@ export default function Tasks(props) {
 
   const handleCloseModalWithChange = (editedTask) => {
     setSelectedTask(editedTask);
-    const updatedTasks = props.data.map((task) => {
+    const updatedTasks = data.map((task) => {
       if (task.id === editedTask.id) {
         return editedTask;
       } else {
@@ -101,7 +108,7 @@ export default function Tasks(props) {
   };
 
   const handleCloseNewModalWithChange = (editedTask) => {
-    const updatedTasks = props.data;
+    const updatedTasks = data;
     updatedTasks.push(editedTask);
     props.modifyData(updatedTasks);
     setShowNewModal(false);
