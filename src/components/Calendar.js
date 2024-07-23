@@ -10,13 +10,13 @@ export default function TaskSnapCalendar(props) {
   const [holidays, setHoliday] = useState([]);
   const HOLIDAY_API_URL = "https://canada-holidays.ca/api/v1/holidays";
 
-  const [data, setData] = useState([]);
-  useEffect(() => {
-    fetch(process.env.REACT_APP_API_URL)
-      .then((response) => response.json())
-      .then((data) => setData(data))
-      .catch((error) => console.error("Error:", error));
-  }, []);
+  // const [data, setData] = useState([]);
+  // useEffect(() => {
+  //   fetch(process.env.REACT_APP_API_URL)
+  //     .then((response) => response.json())
+  //     .then((data) => setData(data))
+  //     .catch((error) => console.error("Error:", error));
+  // }, []);
 
   // Fetching holiday data from API
   useEffect(() => {
@@ -48,7 +48,7 @@ export default function TaskSnapCalendar(props) {
       allDay: task.allDay,
     };
   }
-  const newTasks = data
+  const newTasks = props.data
     .filter((data) => data.status === "ongoing")
     .map(taskToEvent);
   useEffect(() => {
