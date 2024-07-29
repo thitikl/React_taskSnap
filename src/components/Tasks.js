@@ -90,7 +90,7 @@ export default function Tasks(props) {
         return task;
       }
     });
-    props.modifyData(updatedTasks);
+    setData(updatedTasks);
     setShow(false);
   };
 

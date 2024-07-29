@@ -78,7 +78,7 @@ function Board(props) {
         return task;
       }
     });
-    props.modifyData(updatedTasks);
+    setData(updatedTasks);
     handleCloseModal();
   };
 

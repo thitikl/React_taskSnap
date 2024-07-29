@@ -8,6 +8,9 @@ export default function TaskModal(props) {
   const [editedTask, setEditedTask] = useState(props.task);
 
   var heading = props.mode === "new" ? "Add a new task" : "Edit task";
+  var endPoint = props.mode === "new" ? "/create" : "/update/" + editedTask.id;
+  var method = props.mode === "new" ? "POST" : "PUT";
+
   // Object for Select
   var statuses = [
     { value: "plan", label: "Plan" },
@@ -88,7 +91,26 @@ export default function TaskModal(props) {
 
   const handleCloseModalWithChange = () => {
     props.onSave(editedTask);
+    console.log(editedTask);
+    handleAPI();
     props.onHide();
+  };
+
+  const handleAPI = () => {
+    fetch(process.env.REACT_APP_API_URL + endPoint, {
+      method: method,
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(editedTask),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Success:", data);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
   };
 
   return (

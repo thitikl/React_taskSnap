@@ -1,8 +1,6 @@
 export const newTask = {
-  id: "",
   title: "",
   status: "ongoing",
-  assignedTo: "",
   startDate: "",
   startTime: "",
   dueDate: "",
@@ -10,4 +8,7 @@ export const newTask = {
   allDay: false,
   label: "",
   description: "",
+  // TODO change the default value of taskSnapUser to the user's id
+  taskSnapUsers: null,
+  taskSnapUserId: 0,
 };
