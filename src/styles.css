@@ -22,6 +22,7 @@ p {
 }
 .content {
   background-color: #082032;
+  color: white;
 }
 
 #add-task {
@@ -70,6 +71,7 @@ p {
 @media (min-width: 992px) {
   .content {
     padding-left: 220px !important;
+    min-height: 100vh;
   }
 }
 
@@ -107,6 +109,7 @@ p {
 }
 .offcanvas-body {
   padding: 0;
+  height: 60%;
 }
 .offcanvas-body .navbar-nav {
   padding-right: 0 !important;
@@ -116,6 +119,9 @@ p {
 }
 .active {
   background-color: #082032;
+}
+.filling-space {
+  flex-grow: 1;
 }
 
 /* For less than lg breakpoint */

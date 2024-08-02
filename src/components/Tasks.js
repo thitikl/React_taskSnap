@@ -4,17 +4,34 @@ import moment from "moment";
 // Import TaskModal and its methods
 import TaskModal from "./TaskModal";
 import { newTask } from "../constant/newTask";
+import { getToken, isUserLoggedIn } from "../utils/auth";
 
 // TODO change to dynamic icon
 // https://palett.es/
 
 export default function Tasks(props) {
+  const [isLoggedIn, setIsLoggedIn] = useState(isUserLoggedIn());
+
+  if (!isLoggedIn) {
+    window.location.href = "/login";
+  }
+
   const [data, setData] = useState([]);
   useEffect(() => {
-    fetch(process.env.REACT_APP_API_URL)
-      .then((response) => response.json())
-      .then((data) => setData(data))
-      .catch((error) => console.error("Error:", error));
+    const fetchData = async () => {
+      try {
+        const response = await fetch(process.env.REACT_APP_API_URL, {
+          headers: {
+            Authorization: `Bearer ${getToken()}`,
+          },
+        });
+        const data = await response.json();
+        setData(data);
+      } catch (error) {
+        console.error("Error:", error);
+      }
+    };
+    fetchData();
   }, []);
 
   const renderTasks = (tasks, status) => {
@@ -26,7 +43,6 @@ export default function Tasks(props) {
           key={task.id}
           onClick={() => handleClickOpenDialog(task)}
         >
-          {/* TODO Edit img tag */}
           <img
             src={require("../icon/" + task.label.toLowerCase() + ".png")}
             alt={task.title}

@@ -1,15 +1,32 @@
 import moment from "moment";
 import { useState, useEffect } from "react";
 import TaskModal from "./TaskModal";
+import { isUserLoggedIn, getToken } from "../utils/auth";
 
 function Board(props) {
+  const [isLoggedIn, _] = useState(isUserLoggedIn);
+
+  if (!isLoggedIn) {
+    window.location.href = "/login";
+  }
+
   // var data = props.data;
   const [data, setData] = useState([]);
   useEffect(() => {
-    fetch(process.env.REACT_APP_API_URL)
-      .then((response) => response.json())
-      .then((data) => setData(data))
-      .catch((error) => console.error("Error:", error));
+    const fetchData = async () => {
+      try {
+        const response = await fetch(process.env.REACT_APP_API_URL, {
+          headers: {
+            Authorization: `Bearer ${getToken()}`,
+          },
+        });
+        const data = await response.json();
+        setData(data);
+      } catch (error) {
+        console.error("Error:", error);
+      }
+    };
+    fetchData();
   }, []);
 
   const columns = {

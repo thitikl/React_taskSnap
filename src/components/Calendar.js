@@ -3,10 +3,17 @@ import { Calendar, momentLocalizer } from "react-big-calendar";
 import moment from "moment";
 
 import "react-big-calendar/lib/css/react-big-calendar.css";
+import { isUserLoggedIn } from "../utils/auth";
 
 const localizer = momentLocalizer(moment);
 
 export default function TaskSnapCalendar(props) {
+  const [isLoggedIn, setIsLoggedIn] = useState(isUserLoggedIn());
+
+  if (!isLoggedIn) {
+    window.location.href = "/login";
+  }
+
   const [holidays, setHoliday] = useState([]);
   const HOLIDAY_API_URL = "https://canada-holidays.ca/api/v1/holidays";
 
