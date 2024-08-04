@@ -10,7 +10,7 @@ import { getToken, isUserLoggedIn } from "../utils/auth";
 // https://palett.es/
 
 export default function Tasks(props) {
-  const [isLoggedIn, setIsLoggedIn] = useState(isUserLoggedIn());
+  const isLoggedIn = isUserLoggedIn();
 
   if (!isLoggedIn) {
     window.location.href = "/login";

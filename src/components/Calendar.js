@@ -8,7 +8,7 @@ import { isUserLoggedIn } from "../utils/auth";
 const localizer = momentLocalizer(moment);
 
 export default function TaskSnapCalendar(props) {
-  const [isLoggedIn, setIsLoggedIn] = useState(isUserLoggedIn());
+  const isLoggedIn = isUserLoggedIn();
 
   if (!isLoggedIn) {
     window.location.href = "/login";

@@ -32,9 +32,9 @@ const LoginPage = (props) => {
   };
 
   return (
-    <div className="content">
-      <h1>Login Page</h1>
-      <Form onSubmit={handleSubmit}>
+    <div className="content" id="login">
+      <Form onSubmit={handleSubmit} className="form-wrapper">
+        <h1>Signin</h1>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>
           <Form.Control type="email" placeholder="Enter email" />
@@ -47,6 +47,12 @@ const LoginPage = (props) => {
           Submit
         </Button>
       </Form>
+      <div className="form-wrapper">
+        <p>Not having an acoount with us?</p>
+        <a href="/register">
+          <Button variant="secondary">Register</Button>
+        </a>
+      </div>
     </div>
   );
 };

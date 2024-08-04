@@ -1,22 +1,15 @@
-import { useState, useEffect } from "react";
-import { Routes, Route, NavLink } from "react-router-dom";
-import Board from "./components/Board";
-import TaskSnapCalendar from "./components/Calendar";
-import Tasks from "./components/Tasks";
-import LoginPage from "./components/LoginPage";
-import RegisterPage from "./components/RegisterPage";
-import AccountPage from "./components/AccountPage";
-import fullLogo from "./img/full-logo.png";
+import { NavLink } from "react-router-dom";
+import fullLogo from "../img/full-logo.png";
 
 // Bootstrap components
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import Offcanvas from "react-bootstrap/Offcanvas";
-import { isUserLoggedIn } from "./utils/auth";
+import { isUserLoggedIn } from "../utils/auth";
 
 export default function Sidebar(props) {
-  const [isLoggedIn, setIsLoggedIn] = useState(isUserLoggedIn());
+  var isLoggedIn = isUserLoggedIn();
 
   return (
     <>
@@ -70,25 +63,7 @@ export default function Sidebar(props) {
           </Navbar.Offcanvas>
         </Container>
       </Navbar>
-      <Routes>
-        <Route
-          path="/"
-          element={<Tasks data={props.data} modifyData={props.modifyData} />}
-        />
-        <Route
-          path="/board"
-          element={<Board data={props.data} modifyData={props.modifyData} />}
-        />
-        <Route
-          path="/calendar"
-          element={
-            <TaskSnapCalendar data={props.data} modifyData={props.modifyData} />
-          }
-        />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/register" element={<RegisterPage />} />
-        <Route path="/account" element={<AccountPage />} />
-      </Routes>
+      
     </>
   );
 }

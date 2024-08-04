@@ -4,7 +4,7 @@ import TaskModal from "./TaskModal";
 import { isUserLoggedIn, getToken } from "../utils/auth";
 
 function Board(props) {
-  const [isLoggedIn, _] = useState(isUserLoggedIn);
+  const isLoggedIn = isUserLoggedIn();
 
   if (!isLoggedIn) {
     window.location.href = "/login";
@@ -46,14 +46,15 @@ function Board(props) {
       tasks: null,
     },
   };
+  if (data.length > 0) {
+    var planTasks = data.filter((task) => task.status === "plan");
+    var ongoingTasks = data.filter((task) => task.status === "ongoing");
+    var finishedTasks = data.filter((task) => task.status === "finished");
 
-  var planTasks = data.filter((task) => task.status === "plan");
-  var ongoingTasks = data.filter((task) => task.status === "ongoing");
-  var finishedTasks = data.filter((task) => task.status === "finished");
-
-  columns.plan.tasks = planTasks;
-  columns.ongoing.tasks = ongoingTasks;
-  columns.finished.tasks = finishedTasks;
+    columns.plan.tasks = planTasks;
+    columns.ongoing.tasks = ongoingTasks;
+    columns.finished.tasks = finishedTasks;
+  }
 
   var columnOrder = ["plan", "ongoing", "finished"];
 

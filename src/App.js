@@ -1,12 +1,20 @@
 import { BrowserRouter } from "react-router-dom";
 import { useState } from "react";
 import { Toaster } from "react-hot-toast";
+import { Routes, Route } from "react-router-dom";
+import Tasks from "./components/Tasks";
+import Board from "./components/Board";
+import TaskSnapCalendar from "./components/Calendar";
+import LoginPage from "./components/LoginPage";
+import RegisterPage from "./components/RegisterPage";
+import AccountPage from "./components/AccountPage";
+import NavbarWrapper from "./components/NavbarWrapper";
 import moment from "moment";
 
 import data from "./data/MOCK_DATA.json";
 import "./styles.css";
 
-import Sidebar from "./Sidebar";
+import Sidebar from "./components/Sidebar";
 
 // Purpose of this function is to make dates of mock data dynamic on current date. It can be disabled by commenting out this function.
 const mockDataUpdating = () => {
@@ -45,9 +53,29 @@ export default function App() {
     <>
       <BrowserRouter>
         <div className="App">
-          <Sidebar data={tasks} modifyData={setTasks} />
+          <NavbarWrapper>
+            <Sidebar data={tasks} modifyData={setTasks} />
+          </NavbarWrapper>
         </div>
+        <Routes>
+          <Route
+            path="/"
+            element={<Tasks data={tasks} modifyData={setTasks} />}
+          />
+          <Route
+            path="/board"
+            element={<Board data={tasks} modifyData={setTasks} />}
+          />
+          <Route
+            path="/calendar"
+            element={<TaskSnapCalendar data={tasks} modifyData={setTasks} />}
+          />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/account" element={<AccountPage />} />
+        </Routes>
       </BrowserRouter>
+
       <Toaster position="bottom-center" reverseOrder={false} />
     </>
   );
