@@ -3,6 +3,7 @@ import Modal from "react-bootstrap/Modal";
 import moment from "moment";
 import { useState } from "react";
 import Select from "react-select";
+import { getToken } from "../utils/auth";
 
 export default function TaskModal(props) {
   const [editedTask, setEditedTask] = useState(props.task);
@@ -92,15 +93,34 @@ export default function TaskModal(props) {
   const handleCloseModalWithChange = () => {
     props.onSave(editedTask);
     console.log(editedTask);
-    handleAPI();
+    handleAPIPostPut();
     props.onHide();
   };
 
-  const handleAPI = () => {
+  const handleDelete = () => {
+    fetch(process.env.REACT_APP_API_URL + "/delete/" + editedTask.id, {
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${getToken()}`,
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Success:", data);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+    props.onDelete();
+    props.onHide();
+  };
+
+  const handleAPIPostPut = () => {
     fetch(process.env.REACT_APP_API_URL + endPoint, {
       method: method,
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${getToken()}`,
       },
       body: JSON.stringify(editedTask),
     })
@@ -243,12 +263,21 @@ export default function TaskModal(props) {
           </form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={props.onHide}>
-            Close
-          </Button>
-          <Button variant="primary" onClick={handleCloseModalWithChange}>
-            Save Changes
-          </Button>
+          {props.mode !== "new" && (
+            <Button variant="danger" onClick={handleDelete}>
+              Delete
+            </Button>
+          )}
+
+          <div style={{ "flex-grow": 1 }}></div>
+          <div>
+            <Button variant="secondary" onClick={props.onHide}>
+              Close
+            </Button>
+            <Button variant="primary" onClick={handleCloseModalWithChange}>
+              Save Changes
+            </Button>
+          </div>
         </Modal.Footer>
       </Modal>
     </div>

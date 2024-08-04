@@ -9,7 +9,7 @@ import { getToken, isUserLoggedIn } from "../utils/auth";
 // TODO change to dynamic icon
 // https://palett.es/
 
-export default function Tasks(props) {
+export default function Tasks() {
   const isLoggedIn = isUserLoggedIn();
 
   if (!isLoggedIn) {
@@ -126,8 +126,13 @@ export default function Tasks(props) {
   const handleCloseNewModalWithChange = (editedTask) => {
     const updatedTasks = data;
     updatedTasks.push(editedTask);
-    props.modifyData(updatedTasks);
+    setData(updatedTasks);
     setShowNewModal(false);
+  };
+
+  const handleDeleteTask = () => {
+    const updatedTasks = data.filter((t) => t.id !== selectedTask.id);
+    setData(updatedTasks);
   };
 
   return (
@@ -188,6 +193,7 @@ export default function Tasks(props) {
           showModal={showModal}
           onHide={handleCloseModal}
           onSave={handleCloseModalWithChange}
+          onDelete={handleDeleteTask}
         />
       )}
       {showNewModal && (

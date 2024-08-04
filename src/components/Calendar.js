@@ -3,7 +3,7 @@ import { Calendar, momentLocalizer } from "react-big-calendar";
 import moment from "moment";
 
 import "react-big-calendar/lib/css/react-big-calendar.css";
-import { isUserLoggedIn } from "../utils/auth";
+import { isUserLoggedIn, getToken } from "../utils/auth";
 
 const localizer = momentLocalizer(moment);
 
@@ -17,13 +17,27 @@ export default function TaskSnapCalendar(props) {
   const [holidays, setHoliday] = useState([]);
   const HOLIDAY_API_URL = "https://canada-holidays.ca/api/v1/holidays";
 
-  // const [data, setData] = useState([]);
-  // useEffect(() => {
-  //   fetch(process.env.REACT_APP_API_URL)
-  //     .then((response) => response.json())
-  //     .then((data) => setData(data))
-  //     .catch((error) => console.error("Error:", error));
-  // }, []);
+  const [tasks, setTasks] = useState([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(process.env.REACT_APP_API_URL, {
+          headers: {
+            Authorization: `Bearer ${getToken()}`,
+          },
+        });
+        const data = await response.json();
+
+        const newTasks = data
+          .filter((data) => data.status === "ongoing")
+          .map(taskToEvent);
+        setTasks(newTasks);
+      } catch (error) {
+        console.error("Error:", error);
+      }
+    };
+    fetchData();
+  }, []);
 
   // Fetching holiday data from API
   useEffect(() => {
@@ -31,6 +45,7 @@ export default function TaskSnapCalendar(props) {
       .then((res) => res.json())
       .then((data) => setHoliday(data.holidays));
   }, []);
+
   const holidayEvents = [];
   holidays.forEach((holiday) => {
     if (holiday.federal) {
@@ -46,7 +61,7 @@ export default function TaskSnapCalendar(props) {
   });
 
   // Fetching event data from props
-  const [tasks, setTasks] = useState([]);
+  
   function taskToEvent(task) {
     return {
       title: task.title,
@@ -55,12 +70,6 @@ export default function TaskSnapCalendar(props) {
       allDay: task.allDay,
     };
   }
-  const newTasks = props.data
-    .filter((data) => data.status === "ongoing")
-    .map(taskToEvent);
-  useEffect(() => {
-    setTasks(newTasks);
-  }, []);
 
   // Combine data from API and props
   const events = [...holidayEvents, ...tasks];

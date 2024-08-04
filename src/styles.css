@@ -188,6 +188,13 @@ p {
   height: 35px;
   display: inline-block;
 }
+.modal-footer {
+  display: flex;
+  justify-content: space-between;
+  .btn-primary {
+    margin-left: 5px;
+  }
+}
 
 /* ############################################################# */
 
@@ -319,7 +326,13 @@ https://www.flaticon.com/packs/presentations-10?word=training
   transition: 0.2s;
 }
 #board .board-task:hover {
-  background-color: #345b63;
+  background-color: white;
+  h3 {
+    color: black;
+  }
+  p {
+    color: rgb(56, 56, 56);
+  }
   transform: scale(1.02);
 }
 #board .board-status .board-tasks-container {

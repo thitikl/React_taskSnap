@@ -3,14 +3,13 @@ import { useState, useEffect } from "react";
 import TaskModal from "./TaskModal";
 import { isUserLoggedIn, getToken } from "../utils/auth";
 
-function Board(props) {
+function Board() {
   const isLoggedIn = isUserLoggedIn();
 
   if (!isLoggedIn) {
     window.location.href = "/login";
   }
 
-  // var data = props.data;
   const [data, setData] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
@@ -46,7 +45,7 @@ function Board(props) {
       tasks: null,
     },
   };
-  if (data.length > 0) {
+  if (data && data.length > 0) {
     var planTasks = data.filter((task) => task.status === "plan");
     var ongoingTasks = data.filter((task) => task.status === "ongoing");
     var finishedTasks = data.filter((task) => task.status === "finished");
@@ -89,7 +88,7 @@ function Board(props) {
 
   const handleCloseModalWithChange = (editedTask) => {
     setSelectedTask(editedTask);
-    const updatedTasks = props.data.map((task) => {
+    const updatedTasks = data.map((task) => {
       if (task.id === editedTask.id) {
         return editedTask;
       } else {
@@ -105,6 +104,12 @@ function Board(props) {
     setShow(true);
   };
 
+  const handleDeleteTask = () => {
+    const updatedTasks = data.filter((t) => t.id !== selectedTask.id);
+    setData(updatedTasks);
+  };
+
+
   return (
     <div className="content" id="board">
       <div className="board-all-status">
@@ -114,7 +119,7 @@ function Board(props) {
               <h1>{columns[status].title}</h1>
               <hr />
               <div className="board-tasks-container">
-                {columns[status].tasks.length > 0
+                {columns[status].tasks && columns[status].tasks.length > 0
                   ? renderTasks(status)
                   : "No Task to display"}
               </div>
@@ -128,6 +133,7 @@ function Board(props) {
           showModal={showModal}
           onHide={handleCloseModal}
           onSave={handleCloseModalWithChange}
+          onDelete={handleDeleteTask}
         />
       )}
     </div>
