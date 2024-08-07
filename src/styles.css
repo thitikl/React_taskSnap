@@ -516,3 +516,36 @@ https://www.flaticon.com/packs/presentations-10?word=training
     width: 100% !important;
   }
 }
+
+/* ############################################################# */
+
+/* ####### */
+/* Account */
+/* ####### */
+
+#account {
+  padding-top: 100px !important;
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  flex-direction: column;
+
+  .card {
+    background-color: #2c394b;
+    min-width: 40%;
+    padding: 20px;
+  }
+  .card-text {
+    margin: 30px 0 !important;
+  }
+
+  .btn {
+    width: 100% !important;
+  }
+}
+
+@media (max-width: 991px) {
+  .content#account {
+    min-height: 100vh;
+  }
+}
