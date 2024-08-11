@@ -1,4 +1,5 @@
 import { Form, Button } from "react-bootstrap";
+import toast, { Toaster } from "react-hot-toast";
 
 const LoginPage = (props) => {
   const handleSubmit = (e) => {
@@ -21,8 +22,11 @@ const LoginPage = (props) => {
         const data = await response.json();
 
         if (data.token) {
+          toast.success("Logged in successfully");
           localStorage.setItem("token", data.token);
           window.location.href = "/";
+        } else {
+          toast.error(data.description);
         }
       } catch (error) {
         console.error("Error logging in:", error);
@@ -53,6 +57,7 @@ const LoginPage = (props) => {
           <Button variant="secondary">Register</Button>
         </a>
       </div>
+      <Toaster />
     </div>
   );
 };

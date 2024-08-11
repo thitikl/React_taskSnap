@@ -1,5 +1,4 @@
 import { BrowserRouter } from "react-router-dom";
-import { Toaster } from "react-hot-toast";
 import { Routes, Route } from "react-router-dom";
 
 import Tasks from "./components/Tasks";
@@ -13,10 +12,7 @@ import Sidebar from "./components/Sidebar";
 
 import "./styles.css";
 
-
-
 export default function App() {
-  
   return (
     <>
       <BrowserRouter>
@@ -26,25 +22,14 @@ export default function App() {
           </NavbarWrapper>
         </div>
         <Routes>
-          <Route
-            path="/"
-            element={<Tasks/>}
-          />
-          <Route
-            path="/board"
-            element={<Board />}
-          />
-          <Route
-            path="/calendar"
-            element={<TaskSnapCalendar />}
-          />
+          <Route path="/" element={<Tasks />} />
+          <Route path="/board" element={<Board />} />
+          <Route path="/calendar" element={<TaskSnapCalendar />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/account" element={<AccountPage />} />
         </Routes>
       </BrowserRouter>
-
-      <Toaster position="bottom-center" reverseOrder={false} />
     </>
   );
 }

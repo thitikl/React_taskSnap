@@ -138,6 +138,7 @@ export default function Tasks() {
   return (
     <div className="content task-main" id="tasks">
       <div className="all-tasks">
+        {data.length === 0 && <p>No tasks to display</p>}
         {dueTodayTasks.length > 0 && (
           <div className="task-section">
             <h1>Due today</h1>

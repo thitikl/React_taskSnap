@@ -1,4 +1,5 @@
 import { Form, Button } from "react-bootstrap";
+import toast, { Toaster } from "react-hot-toast";
 
 const RegisterPage = () => {
   const handleSubmit = (e) => {
@@ -21,7 +22,11 @@ const RegisterPage = () => {
         );
 
         if (response.status === 200) {
+          toast.success("Registered successfully");
           window.location.href = "/login";
+        } else {
+          const data = await response.json();
+          toast.error(data.description);
         }
       } catch (error) {
         console.error("Error registering:", error);
@@ -68,6 +73,7 @@ const RegisterPage = () => {
           <Button variant="secondary">Signin</Button>
         </a>
       </div>
+      <Toaster />
     </div>
   );
 };
