@@ -253,7 +253,9 @@ export default function TaskModal(props) {
                 value={labels.value}
                 options={labels}
                 defaultValue={labels.filter(
-                  (label) => label.label === editedTask.label
+                  (label) =>
+                    label.value.toLocaleLowerCase() ===
+                    editedTask.label.toLocaleLowerCase()
                 )}
                 name="label"
                 onChange={handleLabelChange}
